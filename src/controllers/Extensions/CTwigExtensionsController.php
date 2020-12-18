@@ -9,7 +9,8 @@ class CTwigExtensionsController extends CBaseController {
     private $m_strBasePath;
 
     public function setBasePath( $objRequest ) {
-        $this->m_strBasePath = $objRequest->getUri()->getScheme() . '://' . $objRequest->getUri()->getHost() . ( validInteger( $objRequest->getUri()->getPort() ) ? ':' . $objRequest->getUri()->getPort() : '' );
+        $strScheme = ( 'LCL' === APP_ENV || 'LCL_OLDB' === APP_ENV ) ? 'http' : 'https';
+        $this->m_strBasePath = $strScheme . '://' . $objRequest->getUri()->getHost() . ( validInteger( $objRequest->getUri()->getPort() ) ? ':' . $objRequest->getUri()->getPort() : '' );
     }
 
     public function setTwigFunctions( $objApp ) {
