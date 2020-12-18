@@ -43,7 +43,7 @@ $arrstrDatabaseConnection = array( 'settings' => array(
     'driver' => 'pgsql',
     'host' => ( 'LCL' === APP_ENV ) ? 'localhost' : $arrmixSettings['db_instance']['host'],
     'database' => $arrmixSettings['db_instance']['dbname'],
-    'username' => $_ENV['USER'],
+    'username' => $_ENV['DB_USER'],
     'password' => $_ENV['PASS'],
     'charset' => 'utf-8'
     )
