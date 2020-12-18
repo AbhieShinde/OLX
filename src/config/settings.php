@@ -6,7 +6,11 @@ return static function() {
     /**
     * Getting Environment Variables from .env files
     */
-    \Dotenv\Dotenv::create( __DIR__ )->load();
+    try {
+        \Dotenv\Dotenv::create( __DIR__ )->load();
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
 
     /**
      * Defining Global Variable for Application Environment

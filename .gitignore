@@ -1,5 +1,5 @@
 vendor/
-
+.env
 CompiledContainer.php
 data/
 cache/
