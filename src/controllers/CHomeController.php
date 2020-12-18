@@ -10,7 +10,6 @@ class CHomeController extends CBaseController {
         try {
             $this->m_boolDatabaseConnected = validObject( \Illuminate\Database\Capsule\Manager::connection()->getPdo(), \PDO::class )
                                             && validString( \Illuminate\Database\Capsule\Manager::connection()->getDatabaseName() );
-            show( 'DB Connected!' );
         } catch( \Exception $objException ) {
             $this->m_boolDatabaseConnected = false;
             ( $this->errorLogger )( $objException );
