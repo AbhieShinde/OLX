@@ -28,7 +28,7 @@ return static function ( array $arrmixSettings ) {
     // PHP Custom Funtions
     require __DIR__ .  DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'custom_functions.php';
 
-    $strLogsDirectory = '.' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'logs';
+    $strLogsDirectory = 'src\logs';
     if( is_dir_empty( $strLogsDirectory ) ) {
         foreach( $arrmixSettings['logger']['files'] as $strLogFileName ) {
             $resLogFile = fopen( $strLogsDirectory . DIRECTORY_SEPARATOR . $strLogFileName, 'w' );

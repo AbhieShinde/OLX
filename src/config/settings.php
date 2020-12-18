@@ -17,7 +17,7 @@ return static function() {
         'app_env' => APP_ENV,
         'di_compilation_path' => __DIR__,
         'display_error_details' => false,
-        'db_instance' => parse_ini_file("../src/config/dbconfig.ini"),
+        'db_instance' => parse_ini_file("./src/config/dbconfig.ini"),
         'views' => [
             'cache' => false
         ],
@@ -38,7 +38,7 @@ return static function() {
         // Overrides for development mode
         $arrmixSettings['di_compilation_path'] = '';
         $arrmixSettings['display_error_details'] = true;
-        $arrmixSettings['logger']['path'] = __DIR__ . '/../src/logs/slim-app.log';
+        $arrmixSettings['logger']['path'] = __DIR__ . '/logs/slim-app.log';
     }
 
     return $arrmixSettings;
