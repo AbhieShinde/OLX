@@ -11,7 +11,7 @@ try {
     //throw $th;
 }
 
-$objConnection = new AMQPStreamConnection( getenv('AMQP_HOST'), getenv('AMQP_PORT'), getenv('AMQP_USERNAME'), getenv('AMQP_PASSWORD') );
+$objConnection = new AMQPStreamConnection( getenv('AMQP_HOST'), getenv('AMQP_PORT'), getenv('AMQP_USERNAME'), getenv('AMQP_PASSWORD'), getenv('AMQP_VHOST') );
 $objChannel    = $objConnection->channel();
 
 list( $strQueueName, $intMessageCount, $intConsumerCount ) = $objChannel->queue_declare( EmailConsumer::QUEUE, false, true, false, false );
