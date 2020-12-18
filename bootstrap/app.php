@@ -36,9 +36,6 @@ $objContainer->set( 'view', function() use ( $arrmixSettings ) {
 /**
  * Database Connection
  */
-var_dump( $_ENV['DB_USER'] );
-var_dump( getenv('DB_USER') );
-exit;
 $arrstrDatabaseConnection = array( 'settings' => array(
     'driver' => 'pgsql',
     'host' => ( 'LCL' === APP_ENV ) ? 'localhost' : $arrmixSettings['db_instance']['host'],
