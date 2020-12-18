@@ -8,9 +8,7 @@ class CHomeController extends CBaseController {
         $this->m_objContainer->get( 'view-extensions' )->setBasePath( $objRequest );
 
         try {
-            $this->m_boolDatabaseConnected = validObject( \Illuminate\Database\Capsule\Manager::connection()->getPdo(), \PDO::class )
-                                            && validString( \Illuminate\Database\Capsule\Manager::connection()->getDatabaseName() );
-            show( \Illuminate\Database\Capsule\Manager::connection()->getDatabaseName() );
+            $this->m_boolDatabaseConnected = validObject( \Illuminate\Database\Capsule\Manager::connection()->getPdo(), \PDO::class ) && validString( \Illuminate\Database\Capsule\Manager::connection()->getDatabaseName() );
         } catch( \Exception $objException ) {
             $this->m_boolDatabaseConnected = false;
             ( $this->errorLogger )( $objException );
