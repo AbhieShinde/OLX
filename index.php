@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <?php
-      echo phpinfo();
-    ?>
-  </body>
-</html>
+<?php
+
+require './bootstrap/app.php';
+
+$objApp->run();

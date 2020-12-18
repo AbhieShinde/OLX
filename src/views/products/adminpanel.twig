@@ -1,0 +1,131 @@
+{% extends 'templates/dashboards/admin.twig' %}
+{% block content %}
+
+<body class="sidebar-is-reduced">
+  <header class="l-header">
+    <div class="l-header__inner clearfix">
+      <div class="c-header-icon js-hamburger">
+        <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
+      </div>
+      <div class="c-header-icon has-dropdown"><span class="c-badge c-badge--red c-badge--header-icon animated swing">14</span><i class="fa fa-bell"></i>
+        <div class="c-dropdown c-dropdown--notifications">
+          <div class="c-dropdown__header"></div>
+          <div class="c-dropdown__content"></div>
+        </div>
+      </div>
+      <div class="c-search">
+        <input class="c-search__input u-input" placeholder="Search..." type="text"/>
+      </div>
+      <div class="header-icons-group">
+        <div class="c-header-icon basket"><span class="c-badge c-badge--blue c-badge--header-icon animated swing">5</span><i class="fa fa-shopping-basket"></i></div>
+        <a href="{{ url_for('home') }}" title="Turn Off Panel"><div class="c-header-icon logout"><i class="fa fa-power-off"></i></div></a>
+      </div>
+    </div>
+  </header>
+  <div class="l-sidebar">
+    <div class="logo">
+      <div class="logo__txt">D</div>
+    </div>
+    <div class="l-sidebar__content">
+      <nav class="c-menu js-menu">
+        <ul class="u-list">
+          <li class="c-menu__item is-active" data-toggle="tooltip" title="Flights" onclick="showPending()">
+            <div class="c-menu__item__inner"><i class="fa fa-plane"></i>
+              <div class="c-menu-item__title"><span>Pending Products</span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Modules" onclick="showPublished()">
+            <div class="c-menu__item__inner"><i class="fa fa-puzzle-piece"></i>
+              <div class="c-menu-item__title"><span>Approved Products</span></div>
+              <div class="c-menu-item__expand js-expand-submenu"><i class="fa fa-angle-down"></i></div>
+            </div>
+            <ul class="c-menu__submenu u-list">
+              <li>Payments</li>
+              <li>Maps</li>
+              <li>Notifications</li>
+            </ul>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Statistics" onclick="showRejected()">
+            <div class="c-menu__item__inner"><i class="far fa-chart-bar"></i>
+              <div class="c-menu-item__title"><span>Rejected Prodcuts</span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Gifts">
+            <div class="c-menu__item__inner"><i class="fa fa-gift"></i>
+              <div class="c-menu-item__title"><span>Gifts</span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+            <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
+              <div class="c-menu-item__title"><span>Settings</span></div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+<main class="l-main">
+  <div class="content-wrapper content-wrapper--with-bg">
+    <h1 class="page-title">Dashboard</h1>
+    <div class="page-content">
+    
+      <div id="status_pending">
+            {% for product in productsP %}
+                <a href="{{ base_path() }}/adminpanel/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="approval_P"></h5>
+                        <div class="ower">Owner : {{ product.owner.name }}</div>
+                        <div class="adminC">
+                            <center>
+                                <a onclick="confirmApprove('{{ product.id }}')"><img src="../images/yes.png" alt="Approve" class="yes"></a>
+                                <a onclick="confirmReject('{{ product.id }}')"><img src="../images/no.png" alt="Reject" class="no"></a>
+                            </center>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    
+        <div id="status_approved">
+            {% for product in productsA %}
+                <a href="{{ base_path() }}/adminpanel/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="approval_A"></h5>
+                        <div class="ower">Owner : {{ product.owner.name }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    
+        <div id="status_rejected">
+            {% for product in productsR %}
+                <a href="{{ base_path() }}/adminpanel/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="approval_R"></h5>
+                        <div class="ower">Owner : {{ product.owner.name }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    
+    </div>
+  </div>
+</main>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://use.fontawesome.com/releases/v5.0.8/js/all.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src="{{ base_path() }}/scripts/AdminPanel/adminPanel.js"></script>
+
+<body>
+{% endblock %}

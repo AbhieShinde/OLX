@@ -1,0 +1,75 @@
+{% extends 'templates/account.twig' %}
+
+{% block content %}
+
+<center>
+    <div class="btn-grp">
+        <button type="button" class="btnL" id="p" onclick="showPending()">Pending</button>
+        <button type="button" class="btnM" id="a" onclick="showPublished()">Published</button>
+        <button type="button" class="btnR" id="r" onclick="showRejected()">Rejected</button>
+    </div>
+</center>
+
+<div id="status_pending">
+
+    {% for product in productsP %}
+    <a href="{{ base_path() }}/myaccount/productdetails?id={{ product.id }}">
+        <div class="main">
+            <h4 class="title">{{ product.title }}</h4>
+            <img src="{{ product.photos.0.file_path }}" class="product_img">
+            <h5 class="category">{{ product.category.name }}</h5>
+            <h5 class="approval_P"></h5>
+            <div class="delete">
+                <center>
+                    <a onclick="confirmDel('{{ product.id }}')"><img src="../images/trash.png"
+                            alt="Delete" class="yes"></a>
+                </center>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+<div id="status_approved">
+
+    {% for product in productsA %}
+    <a href="{{ base_path() }}/myaccount/productdetails?id={{ product.id }}">
+        <div class="main">
+            <h4 class="title">{{ product.title }}</h4>
+            <img src="{{ product.photos.0.file_path }}" class="product_img">
+            <h5 class="category">{{ product.category.name }}</h5>
+            <h5 class="approval_A"></h5>
+            <div class="delete">
+                <center>
+                    <a onclick="confirmDel('{{ product.id }}')"><img src="../images/trash.png"
+                            alt="Delete" class="yes"></a>
+                </center>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+<div id="status_rejected">
+
+    {% for product in productsR %}
+    <a href="{{ base_path() }}/myaccount/productdetails?id={{ product.id }}">
+        <div class="main">
+            <h4 class="title">{{ product.title }}</h4>
+            <img src="{{ product.photos.0.file_path }}" class="product_img">
+            <h5 class="category">{{ product.category.name }}</h5>
+            <h5 class="approval_R"></h5>
+            <div class="delete">
+                <center>
+                    <a onclick="confirmDel('{{ product.id }}')"><img src="../images/trash.png" alt="Delete" class="delete-btn"></a>
+                </center>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

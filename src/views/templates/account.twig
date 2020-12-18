@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xento-OLX : Account</title>
+    <link rel="shortcut icon" type="image/png" href="{{ base_path() }}/data/images/XentoOlx.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ base_path() }}/styles/flash.css">
+    <link rel="stylesheet" href="{{ base_path() }}/styles/navbarAccount.css">
+    <link rel="stylesheet" href="{{ base_path() }}/styles/main.css">
+    <link rel="stylesheet" href="{{ base_path() }}/styles/add.css">
+
+    <script src='{{ base_path() }}/scripts/main.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</head>
+
+<body>
+    {% include 'templates/navigations/nav.twig' %}
+
+    <div class="container">
+
+        <center>
+            {% block content %} {% endblock %}
+            {% include 'templates/popup/flash.twig' %}
+        </center>
+
+        <div style="height: 500px">
+            {# height is given just to make scrolling effect possible #}
+        </div>
+    </div>
+</body>
+
+</html>

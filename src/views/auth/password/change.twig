@@ -1,0 +1,25 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+    <form action="{{ url_for('changepassword') }}" method="post" class="changepassuser">
+
+        {% if errors.pass_old %}
+            <span class="help">{{ errors.pass_old | first }}</span>
+        {% endif %}
+        <input type="password" placeholder="Current Password" name="pass_old" value="{{ old.pass_old }}" class="input{{ errors.pass_old ? ' has-error' : '' }}" required>
+        <br>
+        
+        {% if errors.pass %}
+            <span class="help">{{ errors.pass | first }}</span>
+        {% endif %}
+        <input type="password" placeholder="New Password" name="pass" value="{{ old.pass }}" class="input{{ errors.pass ? ' has-error' : '' }}" required>
+        <br>
+
+        <button type="submit" class="changepass">Change Password</button>
+
+        {{ csrf.field | raw }} <!-- using raw filter the html moqueps arent shown on page -->
+    
+    </form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'templates/product.twig' %}
+
+{% block content %}
+ <form class="one" action="{{ url_for('recoverpassword') }}" method="POST" >
+       
+        <div class="text">
+            <h1>Forgot Your Password?</h1>
+            <h3>Please enter the email address registered on your account</h3>
+            <label for=identifier>Email Address</label>
+            <input class="b1" type="text" name="email">
+            <br><br>
+            <input class="b2" type="submit" value="Reset My Password">
+             {{ csrf.field | raw }}
+        </div>
+</form>
+
+{% endblock %}

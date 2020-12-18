@@ -1,0 +1,58 @@
+{% extends 'templates/product.twig' %}
+
+{% block content %}
+
+<div class="main-panel-pd">
+
+    <div class="leftM-pd"></div>
+
+    <div class="details-panel-pd">
+        
+        <div class="title-pd">{{ userproductdetails.title }}</div>
+
+        <div class="img-pd">
+            <img src="{{ userproductdetails.photos.0.file_path }}" id="main-img-pd" class="main-img-pd">
+
+            {% for photo in userproductdetails.photos %}
+                <img src="{{ photo.file_path }}" alt="Product" class="sec-img-pd" onclick="maxiImg(this)">
+            {% endfor %}
+            
+        </div>
+
+        <div class="details-pd">
+            <div class="category-pd">{{ userproductdetails.category.name }}</div>
+            <div class="prize-pd">₹ {{ userproductdetails.price }}</div>
+            <div class="date-pd">Used since :- {{ userproductdetails.purchased_date }}</div>
+        </div>
+        <div class="description-pd">
+            <h5 class="pdes-pd">Product Description</h5>
+            <p>{{ userproductdetails.description }}</p>
+        </div>
+
+        <div class="comment-section">
+            <form action="{{ url_for('comment') }}" method="POST">
+                <label for="Comment">Write a Comment..</label>
+                <textarea name="comment" id="comment" rows="4"></textarea>
+                <input type="hidden" name="id" value="{{ userproductdetails.id }}">
+                <input type="hidden" name="title" value="{{ userproductdetails.title }}">
+                <input type="hidden" name="emailto" value="{{ userproductdetails.owner.email }}">
+                <input type="hidden" name="phone" value="{{ userproductdetails.owner.phone }}">
+                {{ csrf.field | raw }}
+                <button type="submit">Post</button>
+            </form>
+        </div>
+
+        {% for comment in userproductdetails.comments %}
+            <div class="comments">
+                <label class="comment-label">{{ comment.by.name }} <span class="comment-time">at {{ comment.updated_on }}</span></label>
+                <p class="comment-message">{{ comment.message }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="rightM-pd"></div>
+
+</div>
+
+{% endblock %}

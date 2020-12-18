@@ -1,0 +1,47 @@
+{% extends 'templates/product.twig' %}
+
+{% block content %}
+
+<div class="main-panel-pd">
+
+    <div class="leftM-pd"></div>
+
+    <div class="details-panel-pd">
+        
+        <div class="title-pd">{{ adminproductdetails.title }}</div>
+
+        <div class="img-pd">
+            <img src="{{ adminproductdetails.photos.0.file_path }}" id="main-img-pd" class="main-img-pd">
+
+            {% for photo in adminproductdetails.photos %}
+                <img src="{{ photo.file_path }}" alt="Product" class="sec-img-pd" onclick="maxiImg(this)">
+            {% endfor %}
+            
+        </div>
+
+        <div class="details-pd">
+            <div class="category-pd">{{ adminproductdetails.category.name }}</div>
+            <div class="prize-pd">₹ {{ adminproductdetails.price }}</div>
+            <div class="owner-pd">Owner : {{ adminproductdetails.owner.name }}</div>
+            <div class="addr-pd">{{ adminproductdetails.owner.city }}</div>
+            <div class="date-pd">Used since :- {{ adminproductdetails.purchased_date }}</div>
+        </div>
+        <div class="description-pd">
+            <h5 class="pdes-pd">Product Description</h5>
+            <p>{{ adminproductdetails.description }}</p>
+        </div>
+
+        {% for comment in adminproductdetails.comments %}
+            <div class="comments">
+                <label class="comment-label">{{ comment.by.name }} <span class="comment-time">at {{ comment.updated_on }}</span></label>
+                <p class="comment-message">{{ comment.message }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="rightM-pd"></div>
+
+</div>
+
+{% endblock %}

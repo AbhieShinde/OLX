@@ -1,0 +1,181 @@
+.main-panel-pd {
+    display: flex;
+    font-size: 2rem
+}
+
+.leftM-pd,
+.rightM-pd {
+    flex: 25%
+}
+
+.details-panel-pd {
+    width: 200%;
+    background-color: #f4f7f88c;
+    padding: 20px;
+    border-radius: 20px
+}
+
+.img-pd {
+    display: inline-block;
+    width: 700px;
+    height: 250px;
+    border-style: groove;
+    border-width: 1.5px;
+    padding: 10px;
+    padding-bottom: 70px;
+    background-color: rgb(247, 247, 247);
+    object-fit: contain;
+    margin-left: -50px
+}
+
+.main-img-pd {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.sec-img-pd {
+    display: inline-block;
+    height: 50px;
+    margin: 10px 10px 10px 0;
+    opacity: .5;
+}
+
+.sec-img-pd:focus, .sec-img-pd:active {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: transform .0001s linear
+}
+
+.details-pd {
+    display: inline-block;
+    margin-bottom: -700px;
+    max-width: 100px;
+}
+
+.title-pd {
+    display: inline-block;
+    background-image: linear-gradient(to right, rgb(41, 90, 180), rgba(255, 255, 255, 0));
+    border-collapse: collapse;
+    padding: 20px;
+    padding-right: 0;
+    color: whitesmoke;
+    font-size-adjust: 100%;
+    font-size: 140%;
+    border-top-left-radius: 10px;
+    width: 100%;
+    margin-top: -1%;
+    margin-bottom: -1%
+}
+
+.category-pd {
+    background-image: linear-gradient(to right, rgb(90, 178, 236), rgb(255, 255, 255));
+    padding: 20px;
+    width: 200%;
+    margin: 10px auto 10px auto;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px
+}
+
+.prize-pd {
+    background-image: linear-gradient(to right, rgb(160, 202, 75), rgb(255, 255, 255));
+    padding: 20px;
+    width: 200%;
+    margin: 0px auto 0px auto;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px
+}
+
+.description-pd, .comment-section {
+    border-style: groove;
+    border-width: 1.5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 2%;
+    width: 100%
+}
+
+.pdes-pd {
+    margin: 0 auto 1% auto
+}
+
+.owner-pd,
+.date-pd {
+    padding: 15px;
+    width: 210%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px
+}
+
+.addr-pd {
+    padding: 25px;
+    width: 192%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px
+}
+
+.owner-pd,
+.addr-pd {
+    margin: 15px auto 0px auto;
+    background-image: linear-gradient(to right, rgb(255, 244, 147), rgb(255, 255, 255));
+}
+
+.comment-section label  {
+    float: left;
+}
+
+.comment-section img  {
+    width: 4rem;
+    margin: auto 10px
+}
+
+#comment    {
+    width: 100%;
+    background-color: azure;
+    border-style: dotted;
+    border-radius: 10px
+}
+
+.comment-section button  {
+    width: 20rem;
+    float: right;
+    height: 3rem;
+    padding: 5px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: rgba(255, 94, 0, 0.795);
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 94, 0.5);
+    border-width: 1px 1px 4px;
+    outline: none;
+}
+
+.comments {
+    width: 100%;
+    margin: 20px auto;
+    background-color: rgba(255, 248, 220, 0.705)
+}
+
+.comments .comment-message {
+    width: 95%;
+    margin: 25px auto;
+    text-align: left;
+    border: 1px ridge;
+    border-top: 2px ridge;
+    padding: 5px 5px 5px 20px 
+}
+
+.comments .comment-label    {
+    padding: 0px;
+    float: left;
+}
+
+.comment-label .comment-time    {
+    font-size: 1.4rem;
+    color: blue;
+    margin-left: 5px
+}

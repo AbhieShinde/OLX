@@ -1,0 +1,38 @@
+.one{
+margin: 120px 400px;
+}
+.text {
+    text-align:center;
+    color: black;
+    font-size: 17px;
+
+ 
+   
+}
+.b1{
+    width: 270px;
+    height: 25px;
+
+}
+
+.b2 {
+    background-color: rgb(5, 46, 228);
+    border: none;
+    color: azure;
+    width: 270px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+label{
+    padding: 5px;
+
+}
+
+#passwordhelp   {
+    color: red;
+    font-size: 1.4rem
+}
+
+
+

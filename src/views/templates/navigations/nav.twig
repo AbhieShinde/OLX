@@ -1,0 +1,58 @@
+<nav class="nav">
+    <div class="container">
+        <div class="logo">
+            <a href="{{ url_for('home') }}"><img src="{{ base_path() }}/images/XentoOlx.png" alt="Xento-OLX"></a>
+        </div>
+        <div id="mainListDiv" class="main_list">
+            <ul class="navlinks">
+
+                {% if auth.check %}
+                    {% if auth.checkAdmin %}
+                            <li><a href="{{ url_for('adminpanel') }}" id="services">Admin Panel</a></li>
+                            <li class="dropdown">
+                                <button class="dropbtn">{{ name }}</button>
+                                <div class="dropdown-content">
+                                    <a href="{{ url_for('myadminaccount') }}" class="dropdown-content-a">My Account</a>
+                                    <a href="{{ url_for('changepasswordadmin') }}" class="dropdown-content-a">Change Password</a>
+                                    <a href="{{ url_for('signoutadmin') }}" class="dropdown-content-a">Sign out</a>
+                                </div>
+                            </li>
+                    {% else %}
+                        <li><a href="{{ url_for('marketplace') }}" id="marketplace">Marketplace</a></li>
+                        <li><a href="{{ url_for('addadvertisement') }}" id="services">Sell</a></li>
+                        <li class="dropdown">
+                            <button class="dropbtn">{{ name }}</button>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('myaccount') }}" class="dropdown-content-a">My Account</a>
+                                <a href="{{ url_for('changepassword') }}" class="dropdown-content-a">Change Password</a>
+                                <a href="{{ url_for('signout') }}" class="dropdown-content-a">Sign out</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% if bool_is_database_connected is defined and false == bool_is_database_connected %}{% else %}{{ url_for('marketplace') }}{% endif %}" class="{% if bool_is_database_connected is defined and false == bool_is_database_connected %}disabled{% else %}active{% endif %}" id="marketplace">Marketplace</a></li>
+                    <li><a href="{% if bool_is_database_connected is defined and false == bool_is_database_connected %}{% else %}{{ url_for('signup') }}{% endif %}" class="{% if bool_is_database_connected is defined and false == bool_is_database_connected %}disabled{% else %}active{% endif %}" id="signup">Sign up</a></li>
+                    <li><a href="{% if bool_is_database_connected is defined and false == bool_is_database_connected %}{% else %}{{ url_for('signin') }}{% endif %}" class="{% if bool_is_database_connected is defined and false == bool_is_database_connected %}disabled{% else %}active{% endif %}" id="signin">Sign in</a></li>
+                {% endif %}
+                
+            </ul>
+        </div>
+        <span class="navTrigger">
+            <i></i>
+            <i></i>
+            <i></i>
+        </span>
+    </div>
+</nav>
+
+{% if bool_is_database_connected is defined and false == bool_is_database_connected %}
+    <span class="database-connection-error">Oops! Our Database is under maintainance. Some features might be unavailable.</span>
+{% endif %}
+
+<section class="home"></section>
+
+<!-- Jquery needed -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+<script src="{{ base_path() }}/scripts/navbarToggle.js"></script>

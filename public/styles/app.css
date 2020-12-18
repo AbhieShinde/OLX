@@ -1,0 +1,60 @@
+.homepage   {
+    width: 100%
+}
+.hello  {
+    font-size: 2rem;
+}
+.name   {
+    font-size: 5rem;
+    color: rgb(175, 147, 95)
+}
+
+.homepage:hover {
+    background-color: rgba(165, 210, 250, 0.5);
+    padding-top: 5px;
+    transition: all .1s linear
+}
+
+.alert-info {
+    position: relative;
+    bottom: 550px;
+    font-size: 4rem;
+    background-color: rgba(202, 243, 229, 0.7);
+    width: 40%;
+    padding: 5px;
+    border-top: solid 10px aquamarine;
+}
+
+.alert-error {
+    position: relative;
+    bottom: 550px;
+    font-size: 4rem;
+    background-color: rgba(243, 210, 202, 0.7);
+    width: 40%;
+    padding: 5px;
+    border-top: solid 10px crimson;
+}
+
+.help   {
+    font-size: 2rem
+}
+
+.has-error  {
+    border: 1px solid red;
+}
+
+.database-connection-error {
+    position: absolute;
+    width: 99.2%;
+    background-color: crimson;
+    font-size: medium;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    border-bottom-right-radius: 5px;
+}
+
+.disabled {
+    color: slategrey !important;
+    cursor: not-allowed !important;
+}

@@ -1,0 +1,159 @@
+{% extends 'templates/product.twig' %}
+
+{% block content %}
+
+<div class="marketplace">    
+    <div class="split left">
+        <div class="column">
+            <input class="olx3" id="search-products" placeholder="Find a Product">
+            <div class="h2">
+                <span>Categories</span>
+            </div>
+            <div class="c1">
+               <ul>
+                    <button type="button" class="bntall" onclick="allc()">All</button><br>
+                    <button type="button" class="bnt" onclick="elec()">Electronics</button><br>
+                    <button type="button" class="bnt" onclick="house()">HouseHold Goods</button><br>
+                    <button type="button" class="bnt" onclick="furni()">Furniture</button><br>
+                    <button type="button" class="bnt" onclick="cars()">Cars</button><br>
+                    <button type="button" class="bnt" onclick="bikes()">Bikes</button><br>
+                    <button type="button" class="bnt" onclick="oth()">Others</button>
+                </ul> 
+            </div> 
+        </div>
+    </div>
+
+    <div class="split right">
+
+        <div id="search-results"></div>
+
+        <div id="electronics"> 
+            {% for product in productsE %}
+                <a href="{{ base_path() }}/marketplace/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="price">₹ {{ product.price }}</h5>
+                        <div class="owner">Owner : {{ product.owner.name }}</div>
+                        <div class="like">
+                            <center class="count"> 
+                                <span class="ld-count">{{ product.likes }}</span><img src="./images/like.png" alt="Likes" class="ld">
+                                <span class="ld-count">{{ product.dislikes }}</span><img src="./images/dislike.png" alt="Dislikes" class="ld">    
+                            </center>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div id="House">   
+            {% for product in productsH %}
+                <a href="{{ base_path() }}/marketplace/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="price">₹ {{ product.price }}</h5>
+                        <div class="owner">Owner : {{ product.owner.name }}</div>
+                        <div class="like">
+                            <center class="count"> 
+                                <span class="ld-count">{{ product.likes }}</span><img src="./images/like.png" alt="Likes" class="ld">
+                                <span class="ld-count">{{ product.dislikes }}</span><img src="./images/dislike.png" alt="Dislikes" class="ld">    
+                            </center>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div id="other">        
+            {% for product in productsO %}
+                <a href="{{ base_path() }}/marketplace/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="price">₹ {{ product.price }}</h5>
+                        <div class="owner">Owner : {{ product.owner.name }}</div>
+                        <div class="like">
+                            <center class="count"> 
+                                <span class="ld-count">{{ product.likes }}</span><img src="./images/like.png" alt="Likes" class="ld">
+                                <span class="ld-count">{{ product.dislikes }}</span><img src="./images/dislike.png" alt="Dislikes" class="ld">    
+                            </center>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div id="bike">        
+                {% for product in productsB %}
+
+                <a href="{{ base_path() }}/marketplace/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="price">₹ {{ product.price }}</h5>
+                        <div class="owner">Owner : {{ product.owner.name }}</div>
+                        <div class="like">
+                            <center class="count"> 
+                                <span class="ld-count">{{ product.likes }}</span><img src="./images/like.png" alt="Likes" class="ld">
+                                <span class="ld-count">{{ product.dislikes }}</span><img src="./images/dislike.png" alt="Dislikes" class="ld">    
+                            </center>
+                        </div>
+                    </div>
+                </a>
+
+            {% endfor %}
+        </div>
+
+        <div id="fur">
+            {% for product in productsF %}
+
+                <a href="{{ base_path() }}/marketplace/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="price">₹ {{ product.price }}</h5>
+                        <div class="owner">Owner : {{ product.owner.name }}</div>
+                        <div class="like">
+                            <center class="count"> 
+                                <span class="ld-count">{{ product.likes }}</span><img src="./images/like.png" alt="Likes" class="ld">
+                                <span class="ld-count">{{ product.dislikes }}</span><img src="./images/dislike.png" alt="Dislikes" class="ld">    
+                            </center>
+                        </div>
+                    </div>
+                </a>
+
+            {% endfor %}
+        </div>
+
+        <div id="car">
+                {% for product in productsC %}
+
+                <a href="{{ base_path() }}/marketplace/productdetails?id={{ product.id }}">
+                    <div class="main">
+                        <h4 class="title">{{ product.title }}</h4>
+                        <img src="{{ product.photos.0.file_path }}" class="product_img">
+                        <h5 class="category">{{ product.category.name }}</h5>
+                        <h5 class="price">₹ {{ product.price }}</h5>
+                        <div class="owner">Owner : {{ product.owner.name }}</div>
+                        <div class="like">
+                            <center class="count"> 
+                                <span class="ld-count">{{ product.likes }}</span><img src="./images/like.png" alt="Likes" class="ld">
+                                <span class="ld-count">{{ product.dislikes }}</span><img src="./images/dislike.png" alt="Dislikes" class="ld">    
+                            </center>
+                        </div>
+                    </div>
+                </a>
+
+            {% endfor %}
+        </div> 
+
+    </div>
+</div>
+
+{% endblock %}

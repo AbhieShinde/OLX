@@ -1,0 +1,62 @@
+{% extends 'templates/product.twig' %}
+
+{% block content %}
+
+<div class="main-panel-pd">
+
+    <div class="leftM-pd"></div>
+
+    <div class="details-panel-pd">
+        
+        <div class="title-pd">{{ productdetails.title }}</div>
+
+        <div class="img-pd">
+            <img src="{{ productdetails.photos.0.file_path }}" id="main-img-pd" class="main-img-pd">
+
+            {% for photo in productdetails.photos %}
+                <img src="{{ photo.file_path }}" alt="Product" class="sec-img-pd" onclick="maxiImg(this)">
+            {% endfor %}
+            
+        </div>
+
+        <div class="details-pd">
+            <div class="category-pd">{{ productdetails.category.name }}</div>
+            <div class="prize-pd">₹ {{ productdetails.price }}</div>
+            <div class="owner-pd">Owner : {{ productdetails.owner.name }}</div>
+            <div class="addr-pd">{{ productdetails.owner.city }}</div>
+            <div class="date-pd">Used since :- {{ productdetails.purchased_date }}</div>
+        </div>
+        <div class="description-pd">
+            <h5 class="pdes-pd">Product Description</h5>
+            <p>{{ productdetails.description }}</p>
+        </div>
+
+        <div class="comment-section">
+                <a href="{{ base_path() }}/marketplace/productdetails/like?id={{ productdetails.id }}&title={{ productdetails.title }}&emailto={{ productdetails.owner.email }}"><img src="{{ base_path() }}/images/like.png" alt="Like"></a>
+                <a href="{{ base_path() }}/marketplace/productdetails/dislike?id={{ productdetails.id }}&title={{ productdetails.title }}&emailto={{ productdetails.owner.email }}"><img src="{{ base_path() }}/images/dislike.png" alt="Unlike"></a>
+            <form action="{{ url_for('comment') }}" method="POST">
+                <label for="Comment">Write a Comment..</label>
+                <textarea name="comment" id="comment" rows="4"></textarea>
+                <input type="hidden" name="id" value="{{ productdetails.id }}">
+                <input type="hidden" name="title" value="{{ productdetails.title }}">
+                <input type="hidden" name="emailto" value="{{ productdetails.owner.email }}">
+                <input type="hidden" name="phone" value="{{ productdetails.owner.phone }}">
+                {{ csrf.field | raw }}
+                <button type="submit">Post</button>
+            </form>
+        </div>
+
+        {% for comment in productdetails.comments %}
+            <div class="comments">
+                <label class="comment-label">{{ comment.by.name }} <span class="comment-time">at {{ comment.updated_on }}</span></label>
+                <p class="comment-message">{{ comment.message }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="rightM-pd"></div>
+
+</div>
+
+{% endblock %}

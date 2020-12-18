@@ -1,0 +1,44 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+    {# {{ errors | json_encode }} #}
+    <form action="{{ url_for('signup') }}" method="post" class="signup">
+
+        <h2>Register Yourself</h2>
+
+        {% if errors.name %}
+            <span class="help">{{ errors.name | first }}</span>
+        {% endif %}
+        <input type="text" placeholder="Name" name="name" value="{{ old.name }}" class="input{{ errors.name ? ' has-error' : ' ' }}">
+        <br>
+
+        {% if errors.email %}
+            <span class="help">{{ errors.email | first }}</span>
+        {% endif %}
+        <input type="email" placeholder="Email" name="email" value="{{ old.email }}" class="input{{ errors.email ? ' has-error' : ' ' }}">
+        <br>
+
+        {% if errors.password %}
+            <span class="help">{{ errors.password | first }}</span>
+        {% endif %}
+        <span id="passwordhelp" class="passwordhelp"></span>
+        <input type="password" placeholder="Password" name="password" value="{{ old.password }}" class="input{{ errors.password ? ' has-error' : ' ' }}" onblur="validatePassword(this);">
+        <br>
+
+        {% if errors.phone %}
+            <span class="help">{{ errors.phone | first }}</span>
+        {% endif %}
+        <input type="tel" placeholder="Mobile" name="phone" value="{{ old.phone }}" class="input{{ errors.phone ? ' has-error' : ' ' }}">
+        <br>
+
+        {% if errors.city %}
+            <span class="help">{{ errors.city | first }}</span>
+        {% endif %}
+        <input type="text" placeholder="City" name="city" value="{{ old.city }}" class="input{{ errors.city ? ' has-error' : ' ' }}">
+        <br>
+
+        <button type="submit" class="signup-btn">Sign Up</button>
+
+        {{ csrf.field | raw }} <!-- using raw filter the html moqueps arent shown on page -->
+    </form>
+{% endblock %}

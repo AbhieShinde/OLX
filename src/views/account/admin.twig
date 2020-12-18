@@ -1,0 +1,15 @@
+{% extends 'templates/account.twig' %}
+
+{% block content %}
+
+<br><br><br><br><br><br>
+
+<form action="{{ url_for('addcategory') }}">    
+  <button class="bntadd" >Add category</button>
+</form>
+  
+<form action="{{ url_for('signupadmin') }}">    
+  <button class="bntadd" >Add new Admin account</button>
+</form>
+
+{% endblock %}

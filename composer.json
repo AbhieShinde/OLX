@@ -1,0 +1,37 @@
+{
+    "name": "abhieshinde/olx",
+    "description": "Online Marketplace in PHP Slim Framework",
+    "keywords": [
+        "slim", "slim framework", "olx", "php", "abhieshinde"
+    ],
+    "type": "project",
+    "authors": [
+        {
+            "name": "Abhishek Shinde",
+            "email": "abhishinde005@gmail.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "require": {
+        "aws/aws-sdk-php": "^3.133",
+        "illuminate/database": "~5.1",
+        "php-amqplib/php-amqplib": ">=2.9.0",
+        "php-di/php-di": "^6.1",
+        "respect/validation": "^1.1",
+        "slim/csrf": "^1.0",
+        "slim/flash": "^0.4.0",
+        "slim/psr7": "^1.0",
+        "slim/slim": "4.*",
+        "slim/twig-view": "^3.0",
+        "swiftmailer/swiftmailer": "^6.0",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Olx\\": "src/"
+        }
+    }
+}

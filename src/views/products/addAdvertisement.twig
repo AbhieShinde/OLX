@@ -1,0 +1,68 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+<div class="addproduct">
+    <form class="addproduct-form" method="post" enctype="multipart/form-data" name="Ad" action="{{ url_for('addadvertisement') }}">
+        
+        <h4>Poduct Details</h4>
+
+        <label>Title*</label>
+        {% if errors.title %}
+            <span class="help">{{ errors.title | first }}</span>
+        {% endif %}
+        <input type="text" name="title" id="title" value="{{ old.title }}">
+
+        {% if errors.category %}
+            <span class="help">{{ errors.category | first }}</span>
+        {% endif %}
+
+        <select name="category" required>
+            <option value="">Select Category*</option>
+            
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+            
+        </select>
+        <br>
+
+        <label>Price*</label>
+        {% if errors.price %}
+            <span class="help">{{ errors.price | first }}</span>
+        {% endif %}
+        <input type="number" name="price" id="price" placeholder="INR" value="{{ old.price }}">
+
+        <label>Description*</label>
+        {% if errors.description %}
+            <span class="help">{{ errors.description | first }}</span>
+        {% endif %}
+        <textarea name="description" id="description" >{{ old.description }}</textarea>
+        <br>
+    
+        <label>Amount</label>
+        {% if errors.amount %}
+            <span class="help">{{ errors.amount | first }}</span>
+        {% endif %}
+        <input type="number" name="amount" id="amount" placeholder="INR" value="{{ old.amount }}">
+        <br>
+    
+        <label>Purchased Date</label>
+        {% if errors.purchased_date %}
+            <span class="help">{{ errors.purchased_date | first }}</span>
+        {% endif %}
+        <input type="date" name="purchased_date" id="purchased_date" value="{{ old.purchased_date }}">
+        <br>
+    
+        <label>Upload images*</label>
+        <input type="file" name="files[]" multiple onchange="imagesPreview(this, 'div.gallery');" required accept=".jpg , .png , .jpeg"/>
+        <div class="gallery"></div>
+        <br>
+
+        {{ csrf.field | raw }}
+    
+        <button type="submit" class="submit-btn" name="submit">Submit Advertisement</button>
+    </form>
+</div>
+
+{% endblock %}

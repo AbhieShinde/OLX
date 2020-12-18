@@ -1,0 +1,20 @@
+{% extends 'templates/product.twig' %}
+{% block content %}
+
+        <form method="POST" action="{{ url_for('addcategory') }}" name="category">        
+            
+            <div class="form-box">
+                <img src="../images/categorize.png" class="admin" >
+                    <center><h1>Add Categories</h1></center>
+                
+                    <label class="label">Name</label><br>
+                    <input class="input" type="text" name="name"><br>
+                <center>
+                    <br><button class="bnt">Add</button>
+                     {{ csrf.field | raw }}
+                </center>
+         </div>
+         
+    </form>    
+
+{% endblock %}

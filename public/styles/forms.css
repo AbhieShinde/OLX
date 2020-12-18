@@ -1,0 +1,191 @@
+* {
+    transition: all .1s ease-in
+}
+
+.login, .adminlogin  {
+    margin: -550px auto;
+}
+
+.login  {
+    max-width: 400px;
+    float: right;
+    margin-right: 10px
+}
+
+.adminlogin {
+    max-height: 100px
+}
+
+.userlogin form, .adminlogin form, .signup form {
+    width: 400px;
+    margin: 10px auto;
+    float: right;
+    padding: 10px 20px;
+    background: #f4f7f879;
+    border-radius: 8px
+}
+
+input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 10px;
+    width: 100%;
+    background-color: #e8eeefc0;
+    color: #677279;
+    margin-bottom: 20px
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 1.4rem;
+}
+
+h4 {
+    text-align: center;
+    margin-top: 0%
+}
+
+.login-btn, .signup-btn {
+    padding: 5px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: rgb(255, 94, 0);
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid rgb(255, 94, 0.5);
+    border-width: 1px 1px 4px;
+    outline: none;
+    margin-bottom: 10px
+}
+
+button:active {
+    transform: scale(1.02)
+}
+
+a   {
+    float: right;
+    text-decoration: navajowhite;
+    font-size: 14px
+}
+
+form.signup {
+    margin: -500px auto;
+    margin-right: 20px;
+    max-width: 500px;
+    align-self: center;
+}
+
+/* AddAdvertisement */
+
+.addproduct .addproduct-form {
+    max-width: 400px;
+    margin: -500px auto;
+    padding: 10px 20px;
+    background: #f4f7f8ce;
+    border-radius: 8px
+}
+
+.gallery img    {
+    max-width: 50px;
+    padding: 1%;
+    margin-bottom: 20px
+}
+
+.gallery img:hover {
+    transform: scale(5);
+    transition: .5s
+}
+
+.addproduct-form label  {
+    text-align: left
+}
+
+.addproduct-form input,
+.addproduct-form textarea,
+.addproduct-form select {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 90%;
+    background-color: #e8eeef;
+    color: #677279;
+    margin-bottom: 20px
+}
+
+.addproduct-form select {
+    padding: 6px;
+    height: 35px;
+    width: 100%;
+    border-radius: 2px
+}
+
+input[type="file"] {
+    margin-bottom: 5px;
+    padding: 6px
+}
+
+label {
+    display: block;
+    margin-bottom: 2px
+}
+
+h4 {
+    text-align: center;
+    margin-top: 0%
+}
+
+.submit-btn {
+    padding: 5px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #4bc970;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 4px;
+    outline: none;
+    margin-bottom: 10px
+}
+
+button:active {
+    transform: scale(1.02)
+}
+
+.changepassuser {
+    margin: -35% auto;
+    max-width: 50%;
+    background-color: #f5ead69f;
+    padding: 20px;
+    border-top: #e68328 15px ridge;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+.changepass {
+    padding: 5px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #e68328;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    border: 1px solid #794425;
+    border-width: 1px 1px 4px;
+    outline: none;
+}

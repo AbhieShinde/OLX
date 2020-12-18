@@ -1,0 +1,118 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+  }
+.mpanel{
+    /* margin-top: 20px; */
+    display: flex;
+}
+
+.left,
+.right {
+    flex: 30%
+}
+
+.dpanel{
+    width: 100%;
+    background-color: #c7f0fd8c;
+    padding: 20px;
+    border-radius: 20px
+}
+
+.name {
+    display: inline-block;
+    background-image: linear-gradient(to right, rgb(2, 3, 68), rgba(236, 55, 55, 0));
+    border-collapse: collapse; 
+    padding: 20px;
+    padding-right: 0;
+    color: white; 
+    font-size-adjust: 100%; 
+    font-size: 150%;
+    width: 100%;
+    margin-top: -1%;
+    margin-bottom: -1%
+}
+
+.details {
+    display: inline-block;
+    margin-bottom: -700px;
+    margin-top: 0%;
+}
+.img:hover{
+    transform: scale3d(1 2 3);
+    transition: .5s;
+}
+.img1:hover{
+box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.2);
+opacity: 0.85
+}
+.names:hover{
+box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.2);
+opacity: 0.85
+}
+
+.all {
+    display: inline-block;
+    width: 700px;
+    height: 250px;
+    border-style: groove;
+    border-width: 1.5px;
+    padding: 10px;
+    padding-bottom: 70px;
+    background-color: rgb(247, 247, 247)
+}
+
+.img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain; 
+}
+
+.img1 {
+    display: inline-block;
+    width: 100px;
+    margin: 10px 10px 10px 0;
+    opacity: .5;
+}
+
+.first {
+    opacity: 1;
+}
+
+.main {
+    padding: 5px 10px;
+    background-color: #e8eeefc0;
+    margin: 20px 30px;
+    max-width: 420px;
+    border-radius: 10px;
+    display: inline-block
+}
+
+.names{
+    background-image: linear-gradient(to right, rgb(84, 218, 95), rgb(255, 255, 255));
+    padding: 20px;
+    width: 150%;
+    margin: 10px auto 10px auto;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px
+}
+
+.com{
+    display: block;
+    margin-top: 25px;
+    background-color: rgb(157, 219, 193);
+    border-radius: 5px;
+    background-image: linear-gradient(to right, rgb(157, 219, 193), rgb(255, 255, 255));
+  }
+
+  .inc{
+    margin-left: 80px;
+    border:none ;
+    background-image: linear-gradient(to right, rgb(157, 219, 193), rgb(255, 255, 255));
+    /* margin-top: 25px; */
+  }
+
+  .label{
+    color: #002f34;
+    font-size: 20px;
+  }
