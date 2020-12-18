@@ -4,8 +4,12 @@ require __DIR__ . '/../../vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use Olx\controllers\Tools\CEmailConsumerController as EmailConsumer;
 
-$dotenv = Dotenv\Dotenv::create( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' );
-$dotenv->load();
+try {
+    $dotenv = Dotenv\Dotenv::create( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' );
+    $dotenv->load();
+} catch (\Throwable $th) {
+    //throw $th;
+}
 
 $objConnection = new AMQPStreamConnection( getenv('AMQP_HOST'), getenv('AMQP_PORT'), getenv('AMQP_USERNAME'), getenv('AMQP_PASSWORD') );
 $objChannel    = $objConnection->channel();

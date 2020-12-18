@@ -12,7 +12,7 @@ return static function ( App $objApp ) {
     $objErrorMiddleware = $objApp->addErrorMiddleware( true, true, true );
     $objContainer = $objApp->getContainer();
 
-    if( 'LCL' == APP_ENV ) {
+    if( 'LCL' != APP_ENV ) {
 
         /**
         * Slim Application Errors
