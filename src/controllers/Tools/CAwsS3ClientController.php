@@ -16,8 +16,8 @@ class CAwsS3ClientController extends CBaseController {
             'version' => 'latest',
             'region'  => 'ap-south-1',
             'credentials' => [
-                'key'    => $_ENV['aws_access_key_id'],
-                'secret' => $_ENV['aws_access_key_secret'],
+                'key'    => $_ENV['AWS_ACCESS_KEY_ID'],
+                'secret' => $_ENV['AWS_ACCESS_KEY_SECRET'],
             ]
         ]);
     }

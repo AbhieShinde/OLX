@@ -71,7 +71,7 @@ function validObject( $objObject, $strClass, $strMethod = NULL, $strValue = NULL
 }
 
 function encrypt( $strPassword ) {
-	return hash( "sha512", $strPassword . getenv( 'salt' ) );
+	return hash( "sha512", $strPassword . getenv( 'SALT' ) );
 }
 
 function is_dir_empty( $resDirectory ) {

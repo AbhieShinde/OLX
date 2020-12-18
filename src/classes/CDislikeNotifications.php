@@ -9,8 +9,8 @@ use Swift_Message;
 
     function sendMail( $strName, $strTitle, $strEmail )  {
 
-      $strUsername = getenv('email');
-      $strPassword = getenv('password');
+      $strUsername = getenv('EMAIL');
+      $strPassword = getenv('PASSWORD');
 
       $objTransport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'TLS'))
             ->setUsername( $strUsername )

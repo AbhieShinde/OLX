@@ -7,7 +7,7 @@ use Olx\controllers\Tools\CEmailConsumerController as EmailConsumer;
 $dotenv = Dotenv\Dotenv::create( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' );
 $dotenv->load();
 
-$objConnection = new AMQPStreamConnection( getenv('amqp_host'), getenv('amqp_port'), getenv('amqp_username'), getenv('amqp_password') );
+$objConnection = new AMQPStreamConnection( getenv('AMQP_HOST'), getenv('AMQP_PORT'), getenv('AMQP_USERNAME'), getenv('AMQP_PASSWORD') );
 $objChannel    = $objConnection->channel();
 
 list( $strQueueName, $intMessageCount, $intConsumerCount ) = $objChannel->queue_declare( EmailConsumer::QUEUE, false, true, false, false );
@@ -23,8 +23,8 @@ $callback = function ( $objRequest ) {
 
         $arrEmailData = explode( '%%', $objRequest->body );
 
-        $strUsername = getenv( 'email' );
-        $strPassword = getenv( 'password' );
+        $strUsername = getenv( 'EMAIL' );
+        $strPassword = getenv( 'PASSWORD' );
 
         $objTransport = ( new Swift_SmtpTransport( 'smtp.gmail.com', 587, 'TLS' ) )
           ->setUsername( $strUsername )

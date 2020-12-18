@@ -9,8 +9,8 @@ class CAdStatusNotifications {
 
   function approveMail ( $strTitle , $strEmail )  {
 
-    $strUsername = getenv('email');
-    $strPassword = getenv('password');
+    $strUsername = getenv('EMAIL');
+    $strPassword = getenv('PASSWORD');
 
     $objTransport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'TLS'))
           ->setUsername( $strUsername )
@@ -28,8 +28,8 @@ class CAdStatusNotifications {
 
   function rejectMail ( $strTitle , $strEmail )  {
 
-    $strUsername = getenv('email');
-    $strPassword = getenv('password');
+    $strUsername = getenv('EMAIL');
+    $strPassword = getenv('PASSWORD');
 
     $objTransport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'TLS'))
           ->setUsername( $strUsername )
