@@ -4,4 +4,3 @@ CompiledContainer.php
 data/
 cache/
 *.log
-composer.lock
