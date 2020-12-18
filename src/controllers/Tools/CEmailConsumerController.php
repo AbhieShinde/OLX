@@ -17,7 +17,7 @@ class CEmailConsumerController extends CBaseController {
 
         $this->m_strRequest = implode( '%%', func_get_args() );
         
-        $this->m_objConnection = new AMQPStreamConnection( $_ENV['AMQP_HOST'], $_ENV['AMQP_PORT'], $_ENV['AMQP_USERNAME'], $_ENV['AMQP_PASSWORD'] );
+        $this->m_objConnection = new AMQPStreamConnection( $_ENV['AMQP_HOST'], $_ENV['AMQP_PORT'], $_ENV['AMQP_USERNAME'], $_ENV['AMQP_PASSWORD'], $_ENV['AMQP_VHOST'] );
 
         $this->m_objChannel = $this->m_objConnection->channel();
 
