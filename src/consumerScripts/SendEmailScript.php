@@ -43,7 +43,7 @@ $callback = function ( $objRequest ) {
 
         if ( array_key_exists( 3, $arrEmailData ) && is_string( $arrEmailData[3] ) ) {
 
-            $resAttachment = Swift_Attachment::fromPath( $arrEmailData[3] );
+            $resAttachment = Swift_Attachment::fromPath( __DIR__ . $arrEmailData[3] );
             $resAttachment->setFilename( 'Details.txt' );
 
             $objMessage->attach( $resAttachment );

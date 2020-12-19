@@ -5,7 +5,7 @@ namespace Olx\classes;
 
         function createUserFile ( $strName , $strEmail , $strPass , $intPhone, $strCity ) {
 
-            $resDir = 'data';
+            $resDir = 'public/data';
 
             if (!file_exists( $resDir ) && !is_dir( $resDir )) {
                     

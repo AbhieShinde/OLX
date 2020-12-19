@@ -30,7 +30,7 @@ use Olx\controllers\Tools\CEmailConsumerController;
                     </body>
                     </html>';
 
-            $strAttachmentPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . $intId . DIRECTORY_SEPARATOR . 'Credentials.txt';
+            $strAttachmentPath = DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . $intId . DIRECTORY_SEPARATOR . 'Credentials.txt';
 
             $objEmailConsumer = new CEmailConsumerController( $strUser, $strSubject, $strBody, $strAttachmentPath );
             $objEmailConsumer->send();
