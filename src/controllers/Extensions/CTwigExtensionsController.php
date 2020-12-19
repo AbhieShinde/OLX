@@ -9,7 +9,7 @@ class CTwigExtensionsController extends CBaseController {
     private $m_strBasePath;
 
     public function setBasePath( $objRequest ) {
-        $strScheme = ( 'LCL' === APP_ENV || 'LCL_OLDB' === APP_ENV ) ? 'http' : 'https';
+        $strScheme = ( 'DEV' === APP_ENV ) ? 'http' : 'https';
         $this->m_strBasePath = $strScheme . '://' . $objRequest->getUri()->getHost() . ( validInteger( $objRequest->getUri()->getPort() ) ? ':' . $objRequest->getUri()->getPort() : '' );
     }
 
