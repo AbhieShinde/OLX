@@ -9,7 +9,7 @@ return static function ( App $objApp ) {
 
     $objApp->addRoutingMiddleware();
     $objApp->addBodyParsingMiddleware();
-    $objErrorMiddleware = $objApp->addErrorMiddleware( true, true, true );
+    $objErrorMiddleware = $objApp->addErrorMiddleware( 'DEV' === APP_ENV, true, true );
     $objContainer = $objApp->getContainer();
 
     if( 'DEV' != APP_ENV ) {
