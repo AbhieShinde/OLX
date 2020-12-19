@@ -38,7 +38,7 @@ return static function() {
         ],
     ];
 
-    if ( APP_ENV === 'LCL' ) {
+    if ( APP_ENV === 'DEV' ) {
         // Overrides for development mode
         $arrmixSettings['di_compilation_path'] = '';
         $arrmixSettings['display_error_details'] = true;

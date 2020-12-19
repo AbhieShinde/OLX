@@ -4,10 +4,14 @@ require __DIR__ . '/../../vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use Olx\controllers\Tools\CEmailConsumerController as EmailConsumer;
 
-$dotenv = Dotenv\Dotenv::create( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' );
-$dotenv->load();
+try {
+    $dotenv = Dotenv\Dotenv::create( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' );
+    $dotenv->load();
+} catch (\Throwable $th) {
+    //throw $th;
+}
 
-$objConnection = new AMQPStreamConnection( getenv('AMQP_HOST'), getenv('AMQP_PORT'), getenv('AMQP_USERNAME'), getenv('AMQP_PASSWORD') );
+$objConnection = new AMQPStreamConnection( getenv('AMQP_HOST'), getenv('AMQP_PORT'), getenv('AMQP_USERNAME'), getenv('AMQP_PASSWORD'), getenv('AMQP_VHOST') );
 $objChannel    = $objConnection->channel();
 
 list( $strQueueName, $intMessageCount, $intConsumerCount ) = $objChannel->queue_declare( EmailConsumer::QUEUE, false, true, false, false );
@@ -39,7 +43,7 @@ $callback = function ( $objRequest ) {
 
         if ( array_key_exists( 3, $arrEmailData ) && is_string( $arrEmailData[3] ) ) {
 
-            $resAttachment = Swift_Attachment::fromPath( $arrEmailData[3] );
+            $resAttachment = Swift_Attachment::fromPath( __DIR__ . $arrEmailData[3] );
             $resAttachment->setFilename( 'Details.txt' );
 
             $objMessage->attach( $resAttachment );

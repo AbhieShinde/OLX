@@ -23,37 +23,39 @@ class CAdvertisementController extends CBaseController {
         return $this->view->render($res, 'products/addAdvertisement.twig');
     }
 
-    public function postAddAdvertisement ( $req , $res )  {
+    public function postAddAdvertisement ( $objRequest, $objResponse )  {
 
-        $objValidation = $this->validator->validate( $req , [
-            "title" => v::notEmpty(),
-            "category" => v::numeric(),
-            "price" => v::noWhitespace()->notEmpty(),
-            "description" => v::notEmpty(),
-            "amount" => v::noWhitespace(),
-            "purchased_date" => v::date()
+        $objValidation = $this->validator->validate( $objRequest , [
+            "title"             => v::notEmpty(),
+            "category"          => v::numeric(),
+            "price"             => v::noWhitespace()->notEmpty(),
+            "description"       => v::notEmpty(),
+            "amount"            => v::noWhitespace(),
+            "purchased_date"    => v::date()
         ]);
 
-        if ($objValidation->failed()) {
+        if ( $objValidation->failed() ) {
 
-            return $res->withRedirect($this->m_objContainer->router->pathFor('addadvertisement'));
+            return $objResponse->withRedirect( $this->m_objContainer->router->pathFor( 'addadvertisement' ) );
 
         } else {
 
             DB::beginTransaction();
-            
-            $arrobjQuery = Advertisement::create([
-                'title' => $req->getParam('title'),
-                'description' => $req->getParam('description'),
-                'price' => $req->getParam('price'),
-                'product_category_id' => $req->getParam('category'),
-                'amount' => $req->getParam('amount'),
-                'purchased_date' => $req->getParam('purchased_date'),
-                'updated_by' => $_SESSION['user'],
-                'created_by' => $_SESSION['user'],
-            ]);
 
-            $arrmixUploadedFiles = $req->getUploadedFiles();
+            $arrmixData = $objRequest->getParsedBody();
+            
+            $objAdvertisement = Advertisement::create( [
+                'title'                 => $arrmixData['title'],
+                'description'           => $arrmixData['description'],
+                'price'                 => $arrmixData['price'],
+                'product_category_id'   => $arrmixData['category'],
+                'amount'                => $arrmixData['amount'],
+                'purchased_date'        => $arrmixData['purchased_date'],
+                'updated_by'            => $_SESSION['user'],
+                'created_by'            => $_SESSION['user'],
+            ] );
+
+            $arrmixUploadedFiles = $objRequest->getUploadedFiles();
             
             foreach ( $arrmixUploadedFiles['files'] as $resUploadedFile ) {
 
@@ -63,26 +65,26 @@ class CAdvertisementController extends CBaseController {
 
                     DB::rollBack();
                     
-                    $this->flash->addMessage('error', 'Oops! There was some error uploading your images. Please try again.');
-                    return $res->withRedirect($this->m_objContainer->router->pathFor('addadvertisement'));
+                    $this->flash->addMessage( 'error', 'Oops! There was some error uploading your images. Please try again.' );
+                    return $objResponse->withRedirect( $this->m_objContainer->router->pathFor( 'addadvertisement' ) );
                 }
 
-                $arrobjQuery1 = Media::create([
-                    'file_size' => $resUploadedFile->getSize(),
-                    'file_name' => $resUploadedFile->getClientFilename(),
-                    'file_path' => $strPath,
-                    'advertisement_id' => $arrobjQuery->id,
-                    'product_category_id' => $req->getParam('category'),
-                    'created_by' => $_SESSION['user'],
-                ]);
+                Media::create( [
+                    'file_size'             => $resUploadedFile->getSize(),
+                    'file_name'             => $resUploadedFile->getClientFilename(),
+                    'file_path'             => $strPath,
+                    'advertisement_id'      => $objAdvertisement->id,
+                    'product_category_id'   => $arrmixData['category'],
+                    'created_by'            => $_SESSION['user']
+                ] );
 
             }
 
             DB::commit();
 
-            $this->flash->addMessage('info', 'Product added Successfully!');
+            $this->flash->addMessage( 'info', 'Product added Successfully!' );
 
-            return $res->withRedirect($this->m_objContainer->router->pathFor('home'));
+            return $objResponse->withHeader( 'Location', $this->urlFor( 'home' ) );
         } 
     }
 }

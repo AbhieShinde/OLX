@@ -2,13 +2,9 @@
 /**
  * PHP Common Funtions
  */
-
-function dump( $mixValue ) {
-    echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( $mixValue, true ) ), '</pre>';
-}
-
 function show( $mixValue ) {
-    var_dump( $mixValue );
+	echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( $mixValue, true ) ), '</pre>';
+	echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( get_class_methods( $mixValue ), true ) ), '</pre>';
     exit;
 }
 

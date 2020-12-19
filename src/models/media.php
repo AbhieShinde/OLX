@@ -16,5 +16,7 @@ class Media extends Model {
         'created_by'
     ];
 
+    const UPDATED_AT = NULL;
+
     protected $visible = ['file_path'];
 }

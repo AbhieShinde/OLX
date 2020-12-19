@@ -4,7 +4,7 @@
         <form method="POST" action="{{ url_for('addcategory') }}" name="category">        
             
             <div class="form-box">
-                <img src="../images/categorize.png" class="admin" >
+                <img src="{{ base_path() }}/public/images/categorize.png" class="admin" >
                     <center><h1>Add Categories</h1></center>
                 
                     <label class="label">Name</label><br>
