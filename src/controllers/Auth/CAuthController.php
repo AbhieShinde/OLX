@@ -135,14 +135,14 @@ class CAuthController extends CBaseController {
             $strEncPass = encrypt( $strPass );
             $intMobile  = '+91' . $intPhone;
 
-            $arrobjQuery = User::create([
-                    'name'          => $strName,
-                    'email'         => $strEmail,
-                    'password'      => $strEncPass,
-                    'phone'         => $intPhone,
-                    'city'          => $strCity,
-                    'updated_by'    => 0
-                ]);
+            User::create([
+                'name'          => $strName,
+                'email'         => $strEmail,
+                'password'      => $strEncPass,
+                'phone'         => $intPhone,
+                'city'          => $strCity,
+                'updated_by'    => 0
+            ] );
 
             $this->login( $arrmixData['email'], $strPass );
 

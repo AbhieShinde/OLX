@@ -36,7 +36,7 @@ class CAwsS3ClientController extends CBaseController {
             $objResult = $this->m_objS3Client->putObject([
                 'Bucket' => $this->m_strBucketName,
                 'Key'    => $strKey,
-                'Body'   => fopen( $resUploadedFile->file, 'r'),
+                'Body'   => fopen( $resUploadedFile->getFilePath(), 'r' ),
                 'ACL'    => 'public-read',
             ]);
             
