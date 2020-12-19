@@ -7,7 +7,7 @@ use Aws\S3\Exception\S3Exception;
 
 class CAwsS3ClientController extends CBaseController {
 
-    private $m_strBucketName = 'abhie';
+    private $m_strBucketName = 'abhieshinde-olx';
     protected $m_objS3Client;
 
     public function __construct() {
@@ -29,7 +29,7 @@ class CAwsS3ClientController extends CBaseController {
         $strExtension = pathinfo($strName, PATHINFO_EXTENSION);
         $strBasename = pathinfo($strName, PATHINFO_FILENAME) . '_' . bin2hex(random_bytes(5));
         $strFileName = sprintf('%s.%s', $strBasename, $strExtension);
-        $strKey = 'xentoOlx/' . $_SESSION['user'] . '/' . $strFileName;
+        $strKey = $_SESSION['user'] . '/' . $strFileName;
 
         try {
                             
