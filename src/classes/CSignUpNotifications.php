@@ -7,7 +7,7 @@ use Olx\controllers\Tools\CEmailConsumerController;
 
         function sendMail( $intId, $strName, $strUser , $strPass )  {
 
-            $strSubject = 'Welcome to Xento-OLX';
+            $strSubject = 'Welcome to AbhieShinde-OLX';
             $strBody = '<!DOCTYPE html>
                     <html lang="en">
                     <head>
@@ -51,7 +51,7 @@ use Olx\controllers\Tools\CEmailConsumerController;
 	        
 	        $strSender = "TXTLCL";
 	        $arrintNumbers = $intMobile;
-	        $strMessage = 'Congratulations' . " $strName " . '! You\'ve successfully registered into Xento-OLX. Your infomation is sent to registered email address.';
+	        $strMessage = 'Congratulations' . " $strName " . '! You\'ve successfully registered into AbhieShinde-OLX. Your infomation is sent to registered email address.';
 	        
 	        $strMessage = urlencode($strMessage);
 	        $strData = "username=".$strUsername."&hash=".$strHash."&message=".$strMessage."&sender=".$strSender."&numbers=".$arrintNumbers."&test=".$boolTest;

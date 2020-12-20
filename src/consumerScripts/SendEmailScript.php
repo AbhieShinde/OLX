@@ -55,8 +55,6 @@ $callback = function ( $objRequest ) {
 
         $objRequest->delivery_info['channel']->basic_ack($objRequest->delivery_info['delivery_tag']);
 
-        exec( "rm -r /var/www/SVPM-Baramati/XentoOlx/public/data/*" );
-
     } catch ( \Exception $objException ) {
 
         echo  " [ERROR] Unable to send email because of following error(s)\n" . $objException->getMessage() . "\n";

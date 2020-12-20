@@ -19,7 +19,7 @@ use Swift_Message;
       $objMailer = new Swift_Mailer($objTransport);
 
       $objMessage = (new Swift_Message('Oops! your product got a Dislike.'))
-            ->setFrom(['admin@xentoolx.in' => 'AbhieShinde'])
+            ->setFrom(['admin@abhieshindeolx.in' => 'AbhieShinde'])
             ->setTo([ $strEmail ])
             ->setBody('Your product, ' . "'$strTitle'" . ' has been disliked by ' . $strName . '!');
 

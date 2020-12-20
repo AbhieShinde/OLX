@@ -1,12 +1,12 @@
 @echo off
 
-title Xento OLX Database Configurations
+title AbhieShinde OLX Database Configurations
 
 COLOR 1F
 
 echo                   Abhishek Shinde
 echo *********************************************************
-echo    Importing PostgreSQL Database for Xento-OLX System
+echo    Importing PostgreSQL Database for AbhieShinde-OLX System
 echo *********************************************************
 echo.
 echo.
