@@ -2,7 +2,7 @@
 namespace Olx\controllers\Products;
 
 use Olx\controllers\CBaseController;
-use Olx\Models\CAdvertisements;
+use Olx\models\CAdvertisements;
 
 class CMarketplaceController extends CBaseController {
 

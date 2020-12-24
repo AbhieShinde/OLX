@@ -1,5 +1,5 @@
 <?php
-namespace Olx\Models;
+namespace Olx\models;
 
 use Illuminate\Database\Eloquent\Model;
 

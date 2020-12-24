@@ -4,7 +4,7 @@ namespace Olx\controllers\Account;
 
 use Olx\controllers\CBaseController;
 
-use Olx\Models\CAdvertisements;
+use Olx\models\CAdvertisements;
 
 class CUserController extends CBaseController {
 

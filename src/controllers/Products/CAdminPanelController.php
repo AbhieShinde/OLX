@@ -3,7 +3,7 @@ namespace Olx\controllers\Products;
 
 use Olx\controllers\CBaseController;
 
-use Olx\Models\CAdvertisements;
+use Olx\models\CAdvertisements;
 
 use Olx\classes\CAdStatusNotifications as Notify;
 

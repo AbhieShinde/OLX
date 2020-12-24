@@ -6,7 +6,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Olx\controllers\CBaseController;
 use Respect\Validation\Validator as v;
 
-use Olx\Models\CAdvertisements;
+use Olx\models\CAdvertisements;
 use Olx\models\media;
 use Olx\models\productCategory;
 
