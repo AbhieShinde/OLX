@@ -1,9 +1,9 @@
 <?php
-namespace Olx\models;
+namespace Olx\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCategory extends Model {
+class CProductCategories extends Model {
 
     protected $table = 'product_categories';
    

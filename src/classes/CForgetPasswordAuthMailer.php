@@ -23,7 +23,7 @@ class CForgetPasswordAuthMailer {
       ->setFrom(['admin@abhieshindeolx.in' => 'AbhieShinde'])
       ->setTo([ $strEmail ])
       ->setBody('You requested a password reset of your AbhieShinde-OLX account. Please follow this link to reset your password.
-                  '."http://olx.xento.in/resetpassword?email=$strEmail&hash=$strHash
+                  '. $_SESSION['BASE_URL'] . "/resetpassword?email=$strEmail&hash=$strHash
                   ".' Thank you!!'
                   .'- Team AbhieShinde-OLX.')
       ;

@@ -1,10 +1,8 @@
 <?php
-
 namespace Olx\controllers\Products;
 
 use Olx\controllers\CBaseController;
-
-use Olx\models\advertisement;
+use Olx\Models\CAdvertisements;
 
 class CMarketplaceController extends CBaseController {
 
@@ -12,14 +10,14 @@ class CMarketplaceController extends CBaseController {
 
         if ( empty($_SESSION['user']) ) {
 
-            $arrobjQuery = Advertisement::with(['photos','owner','category','comments.by'])
+            $arrobjQuery = CAdvertisements::with(['photos','owner','category','comments.by'])
                                 ->where([
                                     ['advertisement_status_type_id', '=', 1]
                                     ])
                                 ->get();
-        }else {
+        } else {
 
-            $arrobjQuery = Advertisement::with(['photos','owner','category','comments.by'])
+            $arrobjQuery = CAdvertisements::with(['photos','owner','category','comments.by'])
                                 ->where([
                                     ['advertisement_status_type_id', '=', 1],
                                     ['created_by', '!=', $_SESSION['user']]
@@ -27,7 +25,7 @@ class CMarketplaceController extends CBaseController {
                                 ->get();
         }
 
-        $arrmixProducts = json_decode($arrobjQuery, true);
+        $arrmixProducts = json_decode( $arrobjQuery, true );
 
         if ( $arrmixProducts != NULL ) {
 
@@ -82,7 +80,7 @@ class CMarketplaceController extends CBaseController {
         return $this->view->render($res, 'products/marketplace.twig');
     }
 
-    public function getSearchResults ($req,$res) {
+    public function getSearchResults ( $req, $res ) {
 
         $strProductS = '';
         
@@ -101,7 +99,7 @@ class CMarketplaceController extends CBaseController {
                 $resPhoto = $_SESSION['products'][$i]['photos'][0]['file_path'];
 
                 $strProductS = $strProductS . 
-                "<a href="."http://olx.xento.in/marketplace/productdetails?id=$intId>
+                "<a href=" . $_SESSION['BASE_URL'] . "/marketplace/productdetails?id=$intId>
                     <div class="."main".">
                         <h4 class="."title".">$strTitle</h4>
                         <img src=$resPhoto class="."product_img".">
@@ -123,7 +121,7 @@ class CMarketplaceController extends CBaseController {
 
             return '<h2>Oops! No such product found !!</h2>';
 
-        }else {
+        } else {
             
             return $strProductS;
         }

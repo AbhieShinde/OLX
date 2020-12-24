@@ -4,7 +4,7 @@ namespace Olx\controllers\Account;
 
 use Olx\controllers\CBaseController;
 
-use Olx\models\advertisement;
+use Olx\Models\CAdvertisements;
 
 class CUserController extends CBaseController {
 
@@ -14,7 +14,7 @@ class CUserController extends CBaseController {
 
         $arrmixAdvertisements = [];
 
-        $arrobjAdvertisements = Advertisement::with( 'photos', 'category' )
+        $arrobjAdvertisements = CAdvertisements::with( 'photos', 'category' )
                                 ->where( 'created_by', '=', $_SESSION['user'] )
                                 ->get();
 
@@ -65,7 +65,7 @@ class CUserController extends CBaseController {
         
         $this->m_intId = $objRequest->getQueryParams()['id'];
 
-        Advertisement::where( 'id' , $this->m_intId )->delete();
+        CAdvertisements::where( 'id' , $this->m_intId )->delete();
 
         $this->flash->addMessage( 'info', 'Product has been deleted' );
 

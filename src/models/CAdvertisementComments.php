@@ -1,9 +1,9 @@
 <?php
-namespace Olx\models;
+namespace Olx\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comments extends Model {
+class CAdvertisementComments extends Model {
 
     protected $table = 'advertisement_comments';
 

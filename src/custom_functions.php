@@ -8,16 +8,6 @@ function show( $mixValue ) {
     exit;
 }
 
-function dumpClassMethods( $objObject ) {
-    $str = "<h4>Methods:</h4>";
-    $str .= "<ol>";
-    foreach ( get_class_methods( $objObject ) as $key => $value) {
-        $str .= "<li>$value()</li>";
-    }
-    $str .= "</ol>";
-    return $str;
-}
-
 function validInteger( $intNumber ) {
     return is_integer( $intNumber );
 }
@@ -45,25 +35,14 @@ function validIntegerArray( $arrmixInputArray ) : bool {
 	return ( count( $arrmixInputArray ) == count( array_filter( filter_var_array( $arrmixInputArray, FILTER_VALIDATE_INT ) ) ) );
 }
 
-function validObject( $objObject, $strClass, $strMethod = NULL, $strValue = NULL ) {
+function validObject( $objObject, $strClass ) {
 
 	if( false == validString( $strClass ) ) {
 		trigger_error( 'Class name must be a valid object or a string', E_USER_WARNING );
-
 		return false;
 	}
 
-	$boolIsValid = ( true == is_object( $objObject ) && true == ( $objObject instanceof $strClass ) ) ? true : false;
-
-	if( true == $boolIsValid && NULL !== $strMethod ) {
-		$boolIsValid &= ( ( true == method_exists( $objObject, 'get' . $strMethod ) && true == valStr( $objObject->{'get' . $strMethod}() ) ) ) ? true : false;
-	}
-
-	if( true == $boolIsValid && NULL !== $strValue ) {
-		$boolIsValid &= ( ( string ) $strValue === ( string ) $objObject->{'get' . $strMethod}() ) ? true : false;
-	}
-
-	return $boolIsValid;
+	return ( is_object( $objObject ) && $objObject instanceof $strClass ) ? true : false;
 }
 
 function encrypt( $strPassword ) {

@@ -11,6 +11,7 @@ class CTwigExtensionsController extends CBaseController {
     public function setBasePath( $objRequest ) {
         $strScheme = ( 'DEV' === APP_ENV ) ? 'http' : 'https';
         $this->m_strBasePath = $strScheme . '://' . $objRequest->getUri()->getHost() . ( validInteger( $objRequest->getUri()->getPort() ) ? ':' . $objRequest->getUri()->getPort() : '' );
+        $_SESSION['BASE_URL'] = $this->m_strBasePath;
     }
 
     public function setTwigFunctions( $objApp ) {

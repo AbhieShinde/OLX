@@ -1,9 +1,9 @@
 <?php
-namespace Olx\models;
+namespace Olx\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class CUsers extends Model {
 
     protected $table = 'users';
 

@@ -1,9 +1,9 @@
 <?php
-namespace Olx\models;
+namespace Olx\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Advertisement extends Model {
+class CAdvertisements extends Model {
 
     protected $table = 'advertisements';
 

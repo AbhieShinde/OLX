@@ -6,7 +6,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Olx\controllers\CBaseController;
 use Respect\Validation\Validator as v;
 
-use Olx\models\advertisement;
+use Olx\Models\CAdvertisements;
 use Olx\models\media;
 use Olx\models\productCategory;
 
@@ -44,7 +44,7 @@ class CAdvertisementController extends CBaseController {
 
             $arrmixData = $objRequest->getParsedBody();
             
-            $objAdvertisement = Advertisement::create( [
+            $objAdvertisement = CAdvertisements::create( [
                 'title'                 => $arrmixData['title'],
                 'description'           => $arrmixData['description'],
                 'price'                 => $arrmixData['price'],

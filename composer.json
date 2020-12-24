@@ -17,8 +17,8 @@
     },
     "require": {
         "aws/aws-sdk-php": "^3.133",
-        "illuminate/database": "~5.1",
-        "php-amqplib/php-amqplib": ">=2.9.0",
+        "illuminate/database": "^5.1",
+        "php-amqplib/php-amqplib": "^2.9.0",
         "php-di/php-di": "^6.1",
         "respect/validation": "^1.1",
         "slim/csrf": "^1.0",
