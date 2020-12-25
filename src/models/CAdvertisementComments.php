@@ -15,8 +15,7 @@ class CAdvertisementComments extends Model {
         'created_by'
     ];
 
-    public function by()
-    {
-        return $this->belongsTo('Olx\models\CUsers', 'created_by', 'id')->select('id','name');
+    public function by() {
+        return $this->belongsTo( CUsers::class, 'created_by', 'id' )->select( 'id', 'name' );
     }
 }

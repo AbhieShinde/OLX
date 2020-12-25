@@ -80,22 +80,24 @@ class CCommentsController extends CBaseController {
     
     }
 
-    public function postComment ( $req , $res )   {
+    public function postComment( $objRequest, $objResponse ) {
 
-        $arrobjQuery = CAdvertisementComments::create([
-            'advertisement_id' => $req->getParam('id'),
-            'comment_type_id' => '2',
-            'message' => $req->getParam('comment'),
+        $arrmixFormData = $objRequest->getParsedBody();
+
+        CAdvertisementComments::create([
+            'advertisement_id' => $arrmixFormData['id'],
+            'comment_type_id' => 2,
+            'message' => $arrmixFormData['comment'],
             'updated_by' => $_SESSION['user'],
             'created_by' => $_SESSION['user']
         ]);
 
-        comment::sendMail( $_SESSION['name'] , $req->getParam('title') , $req->getParam('comment') , $req->getParam('emailto') );
-        comment::sendSms( $_SESSION['name'] , $req->getParam('title') , $req->getParam('comment') , $req->getParam('phone') );
+        comment::sendMail( $_SESSION['name'], $arrmixFormData['title'], $arrmixFormData['comment'], $arrmixFormData['emailto'] );
+        // comment::sendSms( $_SESSION['name'] , $req->getParam('title') , $req->getParam('comment') , $req->getParam('phone') );
 
-        $this->flash->addMessage('info', 'Comment added');
+        $this->flash->addMessage( 'info', 'Product Comment Added' );
 
-        return $res->withRedirect($this->m_objContainer->router->pathFor('marketplace'));
+        return $objResponse->withRedirect( $this->m_objContainer->router->pathFor( 'marketplace' ) );
     
     }
 }

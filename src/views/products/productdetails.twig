@@ -11,16 +11,16 @@
         <div class="title-pd">{{ productdetails.title }}</div>
 
         <div class="img-pd">
-            <img src="{{ productdetails.photos.0.file_path }}" id="main-img-pd" class="main-img-pd">
+            <img src="{{ productdetails.photos.0 }}" id="main-img-pd" class="main-img-pd">
 
             {% for photo in productdetails.photos %}
-                <img src="{{ photo.file_path }}" alt="Product" class="sec-img-pd" onclick="maxiImg(this)">
+                <img src="{{ photo }}" alt="Product" class="sec-img-pd" onclick="maxiImg(this)">
             {% endfor %}
             
         </div>
 
         <div class="details-pd">
-            <div class="category-pd">{{ productdetails.category.name }}</div>
+            <div class="category-pd">{{ productdetails.category }}</div>
             <div class="prize-pd">₹ {{ productdetails.price }}</div>
             <div class="owner-pd">Owner : {{ productdetails.owner.name }}</div>
             <div class="addr-pd">{{ productdetails.owner.city }}</div>
@@ -32,8 +32,8 @@
         </div>
 
         <div class="comment-section">
-                <a href="{{ base_path() }}/marketplace/productdetails/like?id={{ productdetails.id }}&title={{ productdetails.title }}&emailto={{ productdetails.owner.email }}"><img src="{{ base_path() }}/images/like.png" alt="Like"></a>
-                <a href="{{ base_path() }}/marketplace/productdetails/dislike?id={{ productdetails.id }}&title={{ productdetails.title }}&emailto={{ productdetails.owner.email }}"><img src="{{ base_path() }}/images/dislike.png" alt="Unlike"></a>
+                <a href="{{ base_path() }}/marketplace/productdetails/like?id={{ productdetails.id }}&title={{ productdetails.title }}&emailto={{ productdetails.owner.email }}"><img src="{{ base_path() }}/public/images/like.png" alt="Like"></a>
+                <a href="{{ base_path() }}/marketplace/productdetails/dislike?id={{ productdetails.id }}&title={{ productdetails.title }}&emailto={{ productdetails.owner.email }}"><img src="{{ base_path() }}/public/images/dislike.png" alt="Unlike"></a>
             <form action="{{ url_for('comment') }}" method="POST">
                 <label for="Comment">Write a Comment..</label>
                 <textarea name="comment" id="comment" rows="4"></textarea>
@@ -48,7 +48,7 @@
 
         {% for comment in productdetails.comments %}
             <div class="comments">
-                <label class="comment-label">{{ comment.by.name }} <span class="comment-time">at {{ comment.updated_on }}</span></label>
+                <label class="comment-label">{{ comment.name }} <span class="comment-time">at {{ comment.updated_at }}</span></label>
                 <p class="comment-message">{{ comment.message }}</p>
             </div>
         {% endfor %}
