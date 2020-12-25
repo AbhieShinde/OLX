@@ -20,7 +20,7 @@ class CAdvertisements extends Model {
     ];
 
     public function photos()    {
-        return $this->hasMany( 'Olx\models\CMedia' )->select( [ 'file_path', 'advertisement_id' ] );
+        return $this->hasMany( 'Olx\models\CMedia', 'advertisement_id', 'id' )->select( [ 'file_path', 'advertisement_id' ] );
         // the foreign key (advertisement_id) must be selected above so that Laravel knows how to link the models together when building the relationships.
     }
 

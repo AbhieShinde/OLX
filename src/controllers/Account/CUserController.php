@@ -56,7 +56,7 @@ class CUserController extends CBaseController {
             }
         }
 
-        $_SESSION['userproducts'] = $arrmixAdvertisements;
+        $_SESSION['userproducts'] = rekeyArray( 'id', $arrmixAdvertisements );
 
         return $this->view->render( $objResponce, 'account/user.twig' );
     }
