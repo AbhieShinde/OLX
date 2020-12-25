@@ -109,7 +109,7 @@ class CMarketplaceController extends CBaseController {
                 $strTitle = $arrmixProduct['title'];
                 $strCategory = $arrmixProduct['category'];
                 $intPrice = $arrmixProduct['price'];
-                $strOwner = $arrmixProduct['owner'];
+                $strOwner = $arrmixProduct['owner']['name'];
                 $intLikes = $arrmixProduct['likes'];
                 $intDislikes = $arrmixProduct['dislikes'];
                 $resPhoto = $arrmixProduct['photos'][0];
@@ -133,13 +133,8 @@ class CMarketplaceController extends CBaseController {
             }
         }
         
-        if ( $strProductS == NULL ) {
-            $objResponse->getBody()->write( '<h2>Oops! No such product found !!</h2>' );
-            return $objResponse;
-        } else {
-            $objResponse->getBody()->write( $strProductS );
-            return $objResponse;
-        }
+        $objResponse->getBody()->write( ( $strProductS == NULL ) ? '<h2>Oops! No such product found. Try searching for Product\'s Title or Description.</h2>' : $strProductS );
+        return $objResponse;
     }
 
 }
