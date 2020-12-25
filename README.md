@@ -1,2 +1,2 @@
 # OLX
-Online Marketplace using PHP Slim Framework
+Online Marketplace using PHP Slim Framework.
