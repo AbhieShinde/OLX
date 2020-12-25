@@ -3,7 +3,7 @@ namespace Olx\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comments extends Model {
+class CAdvertisementComments extends Model {
 
     protected $table = 'advertisement_comments';
 
@@ -15,8 +15,7 @@ class Comments extends Model {
         'created_by'
     ];
 
-    public function by()
-    {
-        return $this->belongsTo('Olx\models\user', 'created_by', 'id')->select('id','name');
+    public function by() {
+        return $this->belongsTo( CUsers::class, 'created_by', 'id' )->select( 'id', 'name' );
     }
 }

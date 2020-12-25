@@ -19,9 +19,9 @@ class CAdStatusNotifications {
     $objMailer = new Swift_Mailer($objTransport);
 
     $objMessage = (new Swift_Message('Product Published'))
-            ->setFrom(['admin@xentoolx.in' => 'AbhieShinde'])
+            ->setFrom(['admin@abhieshindeolx.in' => 'AbhieShinde'])
             ->setTo([ $strEmail ])
-            ->setBody('Congratulations, your product \'' . $strTitle . '\' is now approved and published into Xento Marketplace.');
+            ->setBody('Congratulations, your product \'' . $strTitle . '\' is now approved and published into Marketplace.');
 
     $objMailer->send($objMessage);
   }
@@ -38,9 +38,9 @@ class CAdStatusNotifications {
     $objMailer = new Swift_Mailer($objTransport);
 
     $objMessage = (new Swift_Message('Product Rejected'))
-            ->setFrom(['admin@xentoolx.in' => 'AbhieShinde'])
+            ->setFrom(['admin@abhieshindeolx.in' => 'AbhieShinde'])
             ->setTo([ $strEmail ])
-            ->setBody('Oops, your product \'' . $strTitle . '\' is rejected and cannot be in Xento Marketplace right now.');
+            ->setBody('Oops, your product \'' . $strTitle . '\' is rejected and cannot be in Marketplace right now.');
 
     $objMailer->send($objMessage);
   }

@@ -6,15 +6,15 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Olx\controllers\CBaseController;
 use Respect\Validation\Validator as v;
 
-use Olx\models\advertisement;
-use Olx\models\media;
-use Olx\models\productCategory;
+use Olx\models\CAdvertisements;
+use Olx\models\CMedia;
+use Olx\models\CProductCategories;
 
 class CAdvertisementController extends CBaseController {
 
     public function getAddAdvertisement ( $req , $res )   {
 
-        $arrobjQuery = ProductCategory::select('id','name')->get();
+        $arrobjQuery = CProductCategories::select('id','name')->get();
 
         $arrmixCategories = json_decode( $arrobjQuery , TRUE );
 
@@ -44,7 +44,7 @@ class CAdvertisementController extends CBaseController {
 
             $arrmixData = $objRequest->getParsedBody();
             
-            $objAdvertisement = Advertisement::create( [
+            $objAdvertisement = CAdvertisements::create( [
                 'title'                 => $arrmixData['title'],
                 'description'           => $arrmixData['description'],
                 'price'                 => $arrmixData['price'],
@@ -69,7 +69,7 @@ class CAdvertisementController extends CBaseController {
                     return $objResponse->withRedirect( $this->m_objContainer->router->pathFor( 'addadvertisement' ) );
                 }
 
-                Media::create( [
+                CMedia::create( [
                     'file_size'             => $resUploadedFile->getSize(),
                     'file_name'             => $resUploadedFile->getClientFilename(),
                     'file_path'             => $strPath,

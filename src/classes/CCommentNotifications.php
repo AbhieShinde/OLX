@@ -19,7 +19,7 @@ class CCommentNotifications {
     $objMailer = new Swift_Mailer($objTransport);
 
     $objMessage = (new Swift_Message('Your product got a Comment!'))
-            ->setFrom(['admin@xentoolx.in' => 'AbhieShinde'])
+            ->setFrom(['admin@abhieshindeolx.in' => 'AbhieShinde'])
             ->setTo([ $strEmail ])
             ->setBody("$strName commented on your product '$strTitle'!
                         Comment :- $strComment

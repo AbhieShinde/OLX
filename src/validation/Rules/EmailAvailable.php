@@ -2,7 +2,7 @@
 namespace Olx\validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Olx\models\user;
+use Olx\models\CUsers;
 
 class EmailAvailable extends AbstractRule   {
 
@@ -13,7 +13,7 @@ class EmailAvailable extends AbstractRule   {
     */
     public function validate( $strEmailAddress )  {
 
-        $objQueryResult = User::select('id')->from('users')->where('email', $strEmailAddress)->get();
+        $objQueryResult = CUsers::select('id')->from('users')->where('email', $strEmailAddress)->get();
         
         return 0 == count( $objQueryResult );
     }

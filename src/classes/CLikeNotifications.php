@@ -19,7 +19,7 @@ class CLikeNotifications {
     $objMailer = new Swift_Mailer($objTransport);
 
     $objMessage = (new Swift_Message('Your product got a Like!'))
-            ->setFrom(['admin@xentoolx.in' => 'AbhieShinde'])
+            ->setFrom(['admin@abhieshindeolx.in' => 'AbhieShinde'])
             ->setTo([ $strEmail ])
             ->setBody('Congratulations, ' . $strName . ' liked your product \'' . $strTitle . '\'');
 

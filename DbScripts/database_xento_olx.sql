@@ -299,6 +299,6 @@ CREATE INDEX media_log_id
     ON logs.media(id, advertisement_id, media_id);
 
 --
--- PostgreSQL Database for XENTO_OLX system
+-- PostgreSQL Database for ABHIESHINDE_OLX system
 -- Abhishek Shinde
 --

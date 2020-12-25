@@ -3,7 +3,7 @@ namespace Olx\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Media extends Model {
+class CMedia extends Model {
 
     protected $table = 'media';
 

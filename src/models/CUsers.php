@@ -3,7 +3,7 @@ namespace Olx\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class CUsers extends Model {
 
     protected $table = 'users';
 

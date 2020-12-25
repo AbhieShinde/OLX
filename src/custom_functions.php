@@ -2,20 +2,26 @@
 /**
  * PHP Common Funtions
  */
-function show( $mixValue ) {
-	echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( $mixValue, true ) ), '</pre>';
-	echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( get_class_methods( $mixValue ), true ) ), '</pre>';
-    exit;
+
+function validArray( $arrmixValues, $intCount = 1, $boolCheckForEquality = false ) {
+	$boolIsValid = is_array( $arrmixValues ) ? ( $intCount <= count( $arrmixValues ) ) ? true : false : false;
+	if( $boolCheckForEquality && $boolIsValid ) {
+		$boolIsValid = ( $intCount == count( $arrmixValues ) ) ? true : false;
+	}
+
+	return $boolIsValid;
 }
 
-function dumpClassMethods( $objObject ) {
-    $str = "<h4>Methods:</h4>";
-    $str .= "<ol>";
-    foreach ( get_class_methods( $objObject ) as $key => $value) {
-        $str .= "<li>$value()</li>";
-    }
-    $str .= "</ol>";
-    return $str;
+function show( $mixValue, $boolShowOnlyMethods = false ) {
+	if ( false == $boolShowOnlyMethods ) {
+		echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( $mixValue, true ) ), '</pre>';
+	}
+	if ( validArray( get_class_methods( $mixValue ) ) ) {
+		echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( print_r( get_class_methods( $mixValue ), true ) ), '</pre>';
+	} elseif( true == $boolShowOnlyMethods ) {
+		echo '<pre style="background-color:white; color:rgb(32, 56, 18);padding:5px; border: 1px solid black; border-radius: 4px;">', htmlentities( 'No Class Methods Present' ), '</pre>';
+	}
+    exit;
 }
 
 function validInteger( $intNumber ) {
@@ -27,15 +33,6 @@ function validString( $strString ) {
     return is_string( $strString ) ? ( '' == $strString || ' ' == $strString ) ? false : true : false;
 }
 
-function validArray( $arrmixValues, $intCount = 1, $boolCheckForEquality = false ) {
-	$boolIsValid = is_array( $arrmixValues ) ? ( $intCount <= count( $arrmixValues ) ) ? true : false : false;
-	if( $boolCheckForEquality && $boolIsValid ) {
-		$boolIsValid = ( $intCount == count( $arrmixValues ) ) ? true : false;
-	}
-
-	return $boolIsValid;
-}
-
 function validIntegerArray( $arrmixInputArray ) : bool {
 
 	if( false == valArr( $arrmixInputArray ) ) {
@@ -45,25 +42,14 @@ function validIntegerArray( $arrmixInputArray ) : bool {
 	return ( count( $arrmixInputArray ) == count( array_filter( filter_var_array( $arrmixInputArray, FILTER_VALIDATE_INT ) ) ) );
 }
 
-function validObject( $objObject, $strClass, $strMethod = NULL, $strValue = NULL ) {
+function validObject( $objObject, $strClass ) {
 
 	if( false == validString( $strClass ) ) {
 		trigger_error( 'Class name must be a valid object or a string', E_USER_WARNING );
-
 		return false;
 	}
 
-	$boolIsValid = ( true == is_object( $objObject ) && true == ( $objObject instanceof $strClass ) ) ? true : false;
-
-	if( true == $boolIsValid && NULL !== $strMethod ) {
-		$boolIsValid &= ( ( true == method_exists( $objObject, 'get' . $strMethod ) && true == valStr( $objObject->{'get' . $strMethod}() ) ) ) ? true : false;
-	}
-
-	if( true == $boolIsValid && NULL !== $strValue ) {
-		$boolIsValid &= ( ( string ) $strValue === ( string ) $objObject->{'get' . $strMethod}() ) ? true : false;
-	}
-
-	return $boolIsValid;
+	return ( is_object( $objObject ) && $objObject instanceof $strClass ) ? true : false;
 }
 
 function encrypt( $strPassword ) {
@@ -83,6 +69,42 @@ function is_dir_empty( $resDirectory ) {
 
 	closedir( $resDirectory );
 	return true;
+}
+
+function rekeyArray( $strKeyFieldName, $arrmixUnkeyedData, $boolMakeKeyLowerCase = false, $boolHasMultipleArraysWithSameKey = false, $boolExcludeNulls = false ) {
+	if( false == validArray( $arrmixUnkeyedData ) ) {
+		return $arrmixUnkeyedData;
+	}
+
+	$arrmixRekeyedData = [];
+
+	if( 'index' != $strKeyFieldName ) {
+		foreach( $arrmixUnkeyedData as $arrmixUnkeyedData ) {
+			if( true == $boolExcludeNulls && true == is_null( $arrmixUnkeyedData[$strKeyFieldName] ) ) {
+				continue;
+			}
+			if( true == $boolHasMultipleArraysWithSameKey ) {
+				$strKey                       = ( true == $boolMakeKeyLowerCase ) ? strtolower( trim( $arrmixUnkeyedData[$strKeyFieldName] ) ) : trim( $arrmixUnkeyedData[$strKeyFieldName] );
+				$arrmixRekeyedData[$strKey][] = $arrmixUnkeyedData;
+			} else {
+
+				if( false == isset ( $arrmixUnkeyedData[$strKeyFieldName] ) ) {
+					$strKey = '';
+				} else {
+					$strKey = ( true == $boolMakeKeyLowerCase ) ? strtolower( trim( $arrmixUnkeyedData[$strKeyFieldName] ) ) : trim( $arrmixUnkeyedData[$strKeyFieldName] );
+				}
+
+				$arrmixRekeyedData[$strKey] = $arrmixUnkeyedData;
+			}
+		}
+	} else {
+
+		foreach( $arrmixUnkeyedData as $arrmixUnkeyedData ) {
+			$arrmixRekeyedData[] = $arrmixUnkeyedData;
+		}
+	}
+
+	return $arrmixRekeyedData;
 }
 
 ?>

@@ -27,8 +27,6 @@ $objApp->get('/marketplace/searchproduct', 'MarketplaceController:getSearchResul
  */
 $objApp->group('', function ( $objGroup ) {
 
-    $objGroup->post('/signin', 'AuthController:postSignIn');
-
     $objGroup->get('/signout', 'AuthController:getSignOut')->setName('signout');
 
     $objGroup->get('/changepassword', 'PasswordController:getChangePassword')->setName('changepassword');
@@ -81,6 +79,7 @@ $objApp->group('', function ( $objGroup ) {
     $objGroup->post('/signup', 'AuthController:postSignUp');
 
     $objGroup->get('/signin', 'AuthController:getSignIn')->setName('signin');
+    $objGroup->post('/signin', 'AuthController:postSignIn');
 
     $objGroup->post('/adminsignin', 'AuthController:postAdminSignIn')->setName('admin_signin');
 

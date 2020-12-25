@@ -6,19 +6,11 @@ use Olx\controllers\CBaseController;
 
 class CProductDetailsController extends CBaseController {
 
-    public function getProductDetails ( $req , $res )   {
+    public function getProductDetails ( $objRequest, $objResponce ) {
 
-        $intId = $req->getQueryParam('id');
+        $this->view->getEnvironment()->addGlobal( 'productdetails', $_SESSION[ 'products' ][ $objRequest->getQueryParams()[ 'id' ] ] );
 
-        for ($i=0; $i < count( $_SESSION['products'] ); $i++) { 
-           
-            if ( $_SESSION['products'][$i]['id'] == $intId ) {
-                
-                $this->view->getEnvironment()->addGlobal('productdetails', $_SESSION['products'][$i] );
-            }
-        }
-
-        return $this->view->render($res, 'products/productdetails.twig');
+        return $this->view->render( $objResponce, 'products/productdetails.twig' );
     }
 
 }

@@ -3,7 +3,7 @@ namespace Olx\controllers\Products;
 
 use Olx\controllers\CBaseController;
 
-use Olx\models\advertisement;
+use Olx\models\CAdvertisements;
 
 use Olx\classes\CAdStatusNotifications as Notify;
 
@@ -11,7 +11,7 @@ class CAdminPanelController extends CBaseController {
 
     public function getAdminPanel ( $req , $res )   {
 
-        $arrobjQuery = Advertisement::with(['photos','owner','category','comments.by'])
+        $arrobjQuery = CAdvertisements::with(['photos','owner','category','comments.by'])
                                 ->get();
 
         $arrmixProducts = json_decode( $arrobjQuery , true );
@@ -58,7 +58,7 @@ class CAdminPanelController extends CBaseController {
         
         $intId = $req->getQueryParams()['id'];
 
-        $arrobjQuery = Advertisement::where('id', $intId )->update([
+        $arrobjQuery = CAdvertisements::where('id', $intId )->update([
             'advertisement_status_type_id' => 1,
             'updated_by' => $_SESSION['admin']
             ]); //1-true
@@ -83,7 +83,7 @@ class CAdminPanelController extends CBaseController {
         
         $intId = $req->getQueryParams()['id'];
 
-        $arrobjQuery = Advertisement::where('id',$intId)->update(['advertisement_status_type_id' => 2, 'updated_by' => $_SESSION['admin']]);
+        $arrobjQuery = CAdvertisements::where('id',$intId)->update(['advertisement_status_type_id' => 2, 'updated_by' => $_SESSION['admin']]);
 
         if ($arrobjQuery) {
 
