@@ -5,7 +5,7 @@ use Olx\controllers\CBaseController;
 
 use Respect\Validation\Validator as v;
 
-use Olx\models\user;
+use Olx\models\CCUserss;
 
 use Olx\classes\CPasswordEncryptor as Encrypt;
 use Olx\classes\CForgetPasswordAuthMailer as AuthMail;
@@ -33,9 +33,9 @@ class CPasswordController extends CBaseController {
             $strPass = $req->getParam('pass');
             $strEncPass = Encrypt::Encrypt($strPass);
             
-            $arrobjQuery = User::find($_SESSION['user'])->update([
+            $arrobjQuery = CUsers::find($_SESSION['CUsers'])->update([
                 'password' => $strEncPass,
-                'updated_by' => $_SESSION['user']
+                'updated_by' => $_SESSION['CUsers']
                 ]);
             
             $this->flash->addMessage('info', 'Password Updated!');
@@ -65,7 +65,7 @@ class CPasswordController extends CBaseController {
             $strPass = $req->getParam('pass');
             $strEncPass = Encrypt::Encrypt($strPass);
             
-            $arrobjQuery = User::find($_SESSION['admin'])->update([
+            $arrobjQuery = CUsers::find($_SESSION['admin'])->update([
                 'password' => $strEncPass,
                 'updated_by' => $_SESSION['admin']
                 ]);
@@ -87,11 +87,11 @@ class CPasswordController extends CBaseController {
 
         $strEmail = $req->getParam('email');
         
-        if( User::where('email', '=', $strEmail)->select('id')->first() !== NULL )    {
+        if( CUsers::where('email', '=', $strEmail)->select('id')->first() !== NULL )    {
 
             $strHash = Encrypt::Encrypt( bin2hex(random_bytes(5)) );
 
-            $arrobjQuery = User::where('email', '=', $strEmail )->update([
+            $arrobjQuery = CUsers::where('email', '=', $strEmail )->update([
                 'hash' => $strHash
                ]);
 
@@ -103,7 +103,7 @@ class CPasswordController extends CBaseController {
 
         }else {
         
-            $this->flash->addMessage('error', 'No such User Found !!');
+            $this->flash->addMessage('error', 'No such CUsers Found !!');
 
             return $res->withRedirect($this->m_objContainer->router->pathFor('recoverpassword'));
         }
@@ -114,7 +114,7 @@ class CPasswordController extends CBaseController {
         $strEmail = $req->getQueryParam('email');
         $strHash = $req->getQueryParam('hash');
 
-        $strDbHash= User::where('email', '=', $strEmail)->select('hash')->first()->hash;
+        $strDbHash= CUsers::where('email', '=', $strEmail)->select('hash')->first()->hash;
 
         if ($strHash === $strDbHash ) {
 
@@ -139,10 +139,10 @@ class CPasswordController extends CBaseController {
 
         $strEncPass = Encrypt::Encrypt($strPass);
             
-        $arrobjQuery= User::where('email', '=', $strEmail)->select('id')->get();
+        $arrobjQuery= CUsers::where('email', '=', $strEmail)->select('id')->get();
         $id = $arrobjQuery->first()->id;
 
-        $arrobjQuery = User::where('email','=',$strEmail)->update([
+        $arrobjQuery = CUsers::where('email','=',$strEmail)->update([
             'password' => $strEncPass,
             'updated_by' => $id,
             'hash' => NULL

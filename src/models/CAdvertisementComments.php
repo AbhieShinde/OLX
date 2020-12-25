@@ -17,6 +17,6 @@ class CAdvertisementComments extends Model {
 
     public function by()
     {
-        return $this->belongsTo('Olx\models\user', 'created_by', 'id')->select('id','name');
+        return $this->belongsTo('Olx\models\CUsers', 'created_by', 'id')->select('id','name');
     }
 }

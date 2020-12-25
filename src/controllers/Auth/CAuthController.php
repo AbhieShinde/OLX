@@ -2,7 +2,7 @@
 namespace Olx\controllers\Auth;
 
 use Olx\controllers\CBaseController;
-use Olx\models\user;
+use Olx\models\CUsers;
 
 use Respect\Validation\Validator;
 
@@ -29,7 +29,7 @@ class CAuthController extends CBaseController {
 
     public function login( $strEmail, $strPass ) {
 
-        $arrobjQueryResult = User::select('id', 'name', 'email', 'password')
+        $arrobjQueryResult = CUsers::select('id', 'name', 'email', 'password')
                         ->where([
                             ['email', $strEmail],
                             ['is_admin', false]
@@ -60,7 +60,7 @@ class CAuthController extends CBaseController {
 
     public function adminLogin( $strEmail , $pass )  {
 
-        $arrobjQuery = User::select('id', 'name', 'email', 'password')
+        $arrobjQuery = CUsers::select('id', 'name', 'email', 'password')
                         ->where([
                             ['email', '=', $strEmail],
                             ['is_admin', '=', true]
@@ -135,7 +135,7 @@ class CAuthController extends CBaseController {
             $strEncPass = encrypt( $strPass );
             $intMobile  = '+91' . $intPhone;
 
-            User::create([
+            CUsers::create([
                 'name'          => $strName,
                 'email'         => $strEmail,
                 'password'      => $strEncPass,
@@ -201,7 +201,7 @@ class CAuthController extends CBaseController {
 
             $strEncPass = encrypt($strPass);
 
-            $arrobjQuery = User::create([
+            $arrobjQuery = CUsers::create([
                 'name' => $strName,
                 'email' => $strEmail,
                 'password' => $strEncPass,

@@ -2,7 +2,7 @@
 namespace Olx\validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use Olx\models\user;
+use Olx\models\CUsers;
 use Olx\classes\CPasswordEncryptor;
 
 class MatchesPassword extends AbstractRule   {
@@ -15,7 +15,7 @@ class MatchesPassword extends AbstractRule   {
     */
     public function validate( $strPassword ) {
 
-        $password = User::select('password')->find($_SESSION['user'])->password;
+        $password = CUsers::select('password')->find($_SESSION['user'])->password;
         $passhash = encrypt( $strPassword );
 
         return ( 0 == \strcmp( $passhash, $password ) ) ? true : false;

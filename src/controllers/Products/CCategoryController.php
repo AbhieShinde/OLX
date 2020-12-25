@@ -5,7 +5,7 @@ namespace Olx\controllers\Products;
 use Olx\controllers\CBaseController;
 use Respect\Validation\Validator as v;
 
-use Olx\models\productCategory;
+use Olx\models\CProductCategories;
 
 class CCategoryController extends CBaseController {
 
@@ -29,7 +29,7 @@ class CCategoryController extends CBaseController {
                     
                     $strName = $req->getParam('name');      
                 
-                   $arrobjQuery= ProductCategory::create([                        
+                   $arrobjQuery= CProductCategories::create([                        
                         'name' => $strName,
                         'updated_by' => $_SESSION['admin']
                     ]);                 

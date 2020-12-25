@@ -20,19 +20,19 @@ class CAdvertisements extends Model {
     ];
 
     public function photos()    {
-        return $this->hasMany( 'Olx\models\media' )->select( [ 'file_path', 'advertisement_id' ] );
+        return $this->hasMany( 'Olx\models\CMedia' )->select( [ 'file_path', 'advertisement_id' ] );
         // the foreign key (advertisement_id) must be selected above so that Laravel knows how to link the models together when building the relationships.
     }
 
     public function comments()  {
-        return $this->hasMany( 'Olx\models\comments' );
+        return $this->hasMany( 'Olx\models\CAdvertisementComments' );
     }
 
     public function owner() {
-        return $this->belongsTo( 'Olx\models\user', 'created_by', 'id' )->select( 'id', 'name', 'email', 'phone', 'city' );
+        return $this->belongsTo( 'Olx\models\CUsers', 'created_by', 'id' )->select( 'id', 'name', 'email', 'phone', 'city' );
     }
 
     public function category()  {
-        return $this->belongsTo( 'Olx\models\productCategory', 'product_category_id', 'id' )->select( 'id', 'name' );
+        return $this->belongsTo( 'Olx\models\CProductCategories', 'product_category_id', 'id' )->select( 'id', 'name' );
     }
 }

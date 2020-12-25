@@ -4,7 +4,7 @@ namespace Olx\controllers\Products;
 
 use Olx\controllers\CBaseController;
 
-use Olx\models\comments;
+use Olx\models\CAdvertisementComments;
 
 use Olx\classes\CLikeNotifications as like;
 use Olx\classes\CDislikeNotifications as dislike;
@@ -14,7 +14,7 @@ class CCommentsController extends CBaseController {
 
     public function postLike ( $req , $res )   {
 
-        $arrobjQuery = Comments::select('id')
+        $arrobjQuery = CAdvertisementComments::select('id')
                                 ->where([
                                     ['created_by', '=', "$_SESSION[user]"],
                                     ['comment_type_id', '=', '0'],
@@ -24,7 +24,7 @@ class CCommentsController extends CBaseController {
 
         if ( count( $arrobjQuery ) == 0 ) {
 
-            $arrobjQuery = Comments::create([
+            $arrobjQuery = CAdvertisementComments::create([
                 'advertisement_id' => $req->getQueryParam('id'),
                 'comment_type_id' => '0',
                 'updated_by' => $_SESSION['user'],
@@ -48,7 +48,7 @@ class CCommentsController extends CBaseController {
 
     public function postDislike ( $req , $res )   {
 
-        $arrobjQuery = Comments::select('id')
+        $arrobjQuery = CAdvertisementComments::select('id')
                                 ->where([
                                     ['created_by', '=', "$_SESSION[user]"],
                                     ['comment_type_id', '=', '1'],
@@ -58,7 +58,7 @@ class CCommentsController extends CBaseController {
 
         if ( count( $arrobjQuery ) == 0 ) {
 
-            $arrobjQuery = Comments::create([
+            $arrobjQuery = CAdvertisementComments::create([
                 'advertisement_id' => $req->getQueryParam('id'),
                 'comment_type_id' => '1',
                 'updated_by' => $_SESSION['user'],
@@ -82,7 +82,7 @@ class CCommentsController extends CBaseController {
 
     public function postComment ( $req , $res )   {
 
-        $arrobjQuery = Comments::create([
+        $arrobjQuery = CAdvertisementComments::create([
             'advertisement_id' => $req->getParam('id'),
             'comment_type_id' => '2',
             'message' => $req->getParam('comment'),
