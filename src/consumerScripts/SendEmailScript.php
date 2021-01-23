@@ -43,10 +43,14 @@ $callback = function ( $objRequest ) {
 
         if ( array_key_exists( 3, $arrEmailData ) && is_string( $arrEmailData[3] ) ) {
 
-            $resAttachment = Swift_Attachment::fromPath( __DIR__ . $arrEmailData[3] );
-            $resAttachment->setFilename( 'Details.txt' );
+            $strAttachmentPath = __DIR__ . $arrEmailData[3];
 
-            $objMessage->attach( $resAttachment );
+            if ( is_resource( $strAttachmentPath ) ) {
+                $resAttachment = Swift_Attachment::fromPath( $strAttachmentPath );
+                $resAttachment->setFilename( 'Details.txt' );
+
+                $objMessage->attach( $resAttachment );
+            }
         }
 
         $objMailer->send( $objMessage );
