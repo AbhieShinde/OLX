@@ -197,7 +197,7 @@ INSERT INTO public.advertisement_status_types (id, name, description) VALUES
 (2,	'Rejected', 'Refused for publish');
 
 INSERT INTO public.users (id, name, email, password, is_admin, phone, city, updated_by) VALUES
-(0,	'Admin', 'admin@xento.com',	'5e5bc4663247ffd2c5af0d93a1e392f9992bbff7e983c4b47e1e807bb5a573f856211244994af2d632bcb92cee9fb0a73af0b43cb1d65f4f801671515d866353', 'true', 1234567890,	'Pune', 0);
+(0,	'Admin - AbhieShinde', 'admin@abhieshinde.tech',	'5e5bc4663247ffd2c5af0d93a1e392f9992bbff7e983c4b47e1e807bb5a573f856211244994af2d632bcb92cee9fb0a73af0b43cb1d65f4f801671515d866353', 'true', 1234567890,	'Pune', 0);
 
 -- 
 -- Adding Constraints
