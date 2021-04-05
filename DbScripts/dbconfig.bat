@@ -65,7 +65,7 @@ echo.
 echo Importing Tables into %dbname% . . .
 echo.
 
-psql -U %username% %dbname% < database_xento_olx.sql
+psql -U %username% %dbname% < database_olx.sql
 
 echo.
 echo.
